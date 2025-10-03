@@ -16,17 +16,22 @@ public class User {
     private Long id;
 
     private String name;
-    private int age;
     private String email;
+    private String username;
+    private int score;
     private String password;
+    private String role;
+
 
     public User () {}
 
-    public User(String name, int age, String email, String password) {
+    public User(String name, String email, String username, int score, String password, String role) {
         setName(name);
-        setAge(age);
         setEmail(email);
+        setUsername(username);
+        setScore(score);
         setPassword(password);
+        setRole(role);
     }
 
     public Long getId() {
@@ -45,20 +50,28 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getPassword () {
@@ -69,4 +82,11 @@ public class User {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
