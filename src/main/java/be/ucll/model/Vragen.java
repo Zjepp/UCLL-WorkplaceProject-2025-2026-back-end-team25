@@ -4,11 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "vragen")
+@Table(name = "question")
 public class Vragen {
     
     @Id
@@ -18,8 +20,10 @@ public class Vragen {
     private String type;
     private String vraag;
 
-    @OneToMany(mappedBy = "vragen")
-    private java.util.List<Antwoorden> antwoorden;
+    @ManyToOne()
+    @JoinColumn(name = "answer_id")
+    private Antwoorden antwoorden;
+
 
     public Vragen(String type, String vraag) {
         this.type = type;

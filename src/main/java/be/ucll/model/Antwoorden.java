@@ -1,12 +1,17 @@
 package be.ucll.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "answer")
 public class Antwoorden {
     
     @Id
@@ -16,9 +21,8 @@ public class Antwoorden {
     private Boolean correct;
     private String antwoord;
 
-    @ManyToOne()
-    @JoinColumn(name = "vragen_id")
-    private Vragen vragen;
+    @OneToMany(mappedBy = "antwoorden")
+    private java.util.List<Vragen> vragen;
 
 
     public Antwoorden(Boolean correct, String antwoord) {
