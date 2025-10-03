@@ -22,6 +22,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public User addUser(User userData) {
         User existingUser = userRepository.findByEmail(userData.getEmail());
         if (existingUser != null) {
