@@ -1,5 +1,10 @@
 package be.ucll.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,14 +25,19 @@ public class Vragen {
     private String type;
     private String vraag;
 
-    @ManyToOne()
-    @JoinColumn(name = "answer_id")
-    private Antwoorden antwoorden;
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Antwoorden> antwoorden;
 
 
-    public Vragen(String type, String vraag) {
+    // @OneToMany(mappedBy = "antwoorden")
+    // private java.util.List<Vragen> vragen;
+
+
+    public Vragen(String type, String vraag, List<Antwoorden> antwoorden) {
         this.type = type;
         this.vraag = vraag;
+        this.antwoorden = antwoorden;
     }
 
     public Vragen() {
@@ -53,10 +63,23 @@ public class Vragen {
         this.vraag = vraag;
     }
 
+    public List<Antwoorden> getAntwoorden() {
+        return antwoorden;
+    }
+
+     public void setAntwoorden() {
+        this.antwoorden =  antwoorden;
+    }
+
+
     @Override
     public String toString() {
         return "Vragen [id=" + id + ", type=" + type + ", vraag=" + vraag + "]";
     }
 
+
+    // public void setAntwoorden(List<Antwoorden> antwoorden) {
+    //     this.antwoorden = antwoorden;
+    // }
 
 }

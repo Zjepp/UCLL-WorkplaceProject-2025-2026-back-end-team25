@@ -1,5 +1,9 @@
 package be.ucll.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,8 +25,14 @@ public class Antwoorden {
     private Boolean correct;
     private String antwoord;
 
-    @OneToMany(mappedBy = "antwoorden")
-    private java.util.List<Vragen> vragen;
+    // @OneToMany(mappedBy = "antwoorden")
+    // private java.util.List<Vragen> vragen;
+
+    @ManyToOne
+    @JoinColumn(name = "vragen_id")
+    @JsonBackReference
+    private Vragen vragen;
+
 
 
     public Antwoorden(Boolean correct, String antwoord) {
@@ -57,6 +67,11 @@ public class Antwoorden {
     @Override
     public String toString() {
         return "Antwoorden [id=" + id + ", correct=" + correct + ", antwoord=" + antwoord + "]";
+    }
+
+
+    public void setVragen(Vragen vraag) {
+        this.vragen = vraag;
     }
     
 }
