@@ -1,5 +1,6 @@
 package be.ucll.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,7 +19,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "question")
 public class Vragen {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,22 +29,24 @@ public class Vragen {
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Antwoorden> antwoorden;
+    private List<Antwoorden> antwoorden = new ArrayList<>();
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
     @JsonBackReference(value = "vraag-resultaat")
     private List<Resultaat> resultaat;
 
-
-
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
-
 
     public Vragen(String type, String vraag, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
         this.type = type;
         this.vraag = vraag;
         this.antwoorden = antwoorden;
+        if (antwoorden != null) {
+            for (Antwoorden a : antwoorden) {
+                a.setVragen(this);
+            }
+        }
         this.resultaat = resultaat;
     }
 
@@ -74,19 +77,17 @@ public class Vragen {
         return antwoorden;
     }
 
-     public void setAntwoorden() {
-        this.antwoorden =  antwoorden;
-    }
-
+    // public void setAntwoorden() {
+    // this.antwoorden = antwoorden;
+    // }
 
     @Override
     public String toString() {
         return "Vragen [id=" + id + ", type=" + type + ", vraag=" + vraag + "]";
     }
 
-
     // public void setAntwoorden(List<Antwoorden> antwoorden) {
-    //     this.antwoorden = antwoorden;
+    // this.antwoorden = antwoorden;
     // }
 
 }
