@@ -28,5 +28,11 @@ public class VragenController {
     public List<Vragen> getAll() {
         return vragenService.getAll();
     }
+
+
+    @GetMapping("/random20")
+    public List<Vragen> get20RandomQuestions() {
+        return vragenService.get20RandomQuestions();
+    }
     
 }
