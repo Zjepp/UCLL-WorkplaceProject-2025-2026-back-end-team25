@@ -2,6 +2,7 @@ package be.ucll.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -29,15 +30,21 @@ public class Vragen {
     @JsonManagedReference
     private List<Antwoorden> antwoorden;
 
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "vraag-resultaat")
+    private List<Resultaat> resultaat;
+
+
 
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
 
 
-    public Vragen(String type, String vraag, List<Antwoorden> antwoorden) {
+    public Vragen(String type, String vraag, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
         this.type = type;
         this.vraag = vraag;
         this.antwoorden = antwoorden;
+        this.resultaat = resultaat;
     }
 
     public Vragen() {

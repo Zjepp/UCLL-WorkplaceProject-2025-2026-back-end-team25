@@ -1,10 +1,17 @@
 package be.ucll.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "user_table")
@@ -22,16 +29,21 @@ public class User {
     private String password;
     private String role;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "user-resultaat")
+    private List<Resultaat> resultaat = new ArrayList<>();
+
 
     public User () {}
 
-    public User(String name, String email, String username, int score, String password, String role) {
+    public User(String name, String email, String username, int score, String password, String role, List<Resultaat> resultaat) {
         setName(name);
         setEmail(email);
         setUsername(username);
         setScore(score);
         setPassword(password);
         setRole(role);
+        this.resultaat = resultaat;
     }
 
     public Long getId() {
@@ -88,5 +100,9 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Resultaat> getResultaat(){
+        return resultaat;
     }
 }

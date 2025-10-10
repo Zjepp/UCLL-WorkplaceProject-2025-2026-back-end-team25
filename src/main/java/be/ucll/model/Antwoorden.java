@@ -30,7 +30,7 @@ public class Antwoorden {
 
     @ManyToOne
     @JoinColumn(name = "vragen_id")
-    @JsonBackReference
+    //@JsonBackReference
     private Vragen vragen;
 
 
