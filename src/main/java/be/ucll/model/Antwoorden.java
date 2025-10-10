@@ -13,11 +13,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "answer")
 public class Antwoorden {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,16 +29,13 @@ public class Antwoorden {
 
     @ManyToOne
     @JoinColumn(name = "vragen_id")
-    //@JsonBackReference
+    @JsonBackReference
     private Vragen vragen;
-
-
 
     public Antwoorden(Boolean correct, String antwoord) {
         this.correct = correct;
         this.antwoord = antwoord;
     }
-
 
     public Antwoorden() {
     }
@@ -69,9 +65,8 @@ public class Antwoorden {
         return "Antwoorden [id=" + id + ", correct=" + correct + ", antwoord=" + antwoord + "]";
     }
 
-
     public void setVragen(Vragen vraag) {
         this.vragen = vraag;
     }
-    
+
 }
