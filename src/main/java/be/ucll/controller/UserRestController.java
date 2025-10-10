@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
@@ -20,7 +21,7 @@ import be.ucll.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/players")
+@RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:8000")
 public class UserRestController {
 
@@ -33,6 +34,11 @@ public class UserRestController {
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @GetMapping("/{email}")
+    public User getUserByEmail(@Valid @RequestParam(value = "email") String email) {
+        return userService.getUserByEmail(email);
     }
 
     @PostMapping()

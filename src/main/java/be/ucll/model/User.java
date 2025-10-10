@@ -1,13 +1,20 @@
 package be.ucll.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Table(name = "users")
+@Table(name = "user_table")
 @Entity
 public class User {
 
@@ -16,17 +23,27 @@ public class User {
     private Long id;
 
     private String name;
-    private int age;
     private String email;
+    private String username;
+    private int score;
     private String password;
+    private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "user-resultaat")
+    private List<Resultaat> resultaat = new ArrayList<>();
+
 
     public User () {}
 
-    public User(String name, int age, String email, String password) {
+    public User(String name, String email, String username, int score, String password, String role, List<Resultaat> resultaat) {
         setName(name);
-        setAge(age);
         setEmail(email);
+        setUsername(username);
+        setScore(score);
         setPassword(password);
+        setRole(role);
+        this.resultaat = resultaat;
     }
 
     public Long getId() {
@@ -45,20 +62,28 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getPassword () {
@@ -69,4 +94,15 @@ public class User {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Resultaat> getResultaat(){
+        return resultaat;
+    }
 }
