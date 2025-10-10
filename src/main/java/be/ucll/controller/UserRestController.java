@@ -21,7 +21,7 @@ import be.ucll.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/players")
+@RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:8000")
 public class UserRestController {
 
@@ -36,7 +36,7 @@ public class UserRestController {
         return userService.getAllUsers();
     }
 
-    @GetMapping
+    @GetMapping("/{email}")
     public User getUserByEmail(@Valid @RequestParam(value = "email") String email) {
         return userService.getUserByEmail(email);
     }
