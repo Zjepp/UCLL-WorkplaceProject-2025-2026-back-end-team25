@@ -36,9 +36,25 @@ public class Resultaat {
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
-        this.resultaat = resultaat;
+        setResultaat(resultaat);
     }
 
+    public void setResultaat(String resultaat) {
+        if (!resultaat.endsWith("%")) {
+            throw new IllegalArgumentException();
+        }
+        
+        String numberPart = resultaat.replace("%", "");
+        try {
+            int percentage = Integer.parseInt(numberPart);
+            if (percentage > 100) {
+                throw new IllegalArgumentException();
+            }
+            this.resultaat = resultaat;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public Resultaat() {
     }
@@ -49,10 +65,6 @@ public class Resultaat {
 
     public String getResultaat() {
         return resultaat;
-    }
-
-    public void setResultaat(String resultaat) {
-        this.resultaat = resultaat;
     }
 
     @Override
