@@ -202,24 +202,24 @@ public class DbInitializer {
                 List.of(a77, a78, a79, a80), null);
 
         // --- 21 ---
-        Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal tijdelijk");
+        Antwoorden a81 = new Antwoorden(true, "diarree");
         Vragen vraag21 = new Vragen("hangman",
-                "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?", List.of(a81),
+                "Wat is de meest voorkomende bijwerking bij de start van metformine?", List.of(a81),
                 null);
 
         // --- 22 ---
-        Antwoorden a85 = new Antwoorden(true, "Tijdens of net na de maaltijd innemen");
-        Vragen vraag22 = new Vragen("hangman", "Wat is de aanbevolen manier om metformine in te nemen?",
+        Antwoorden a85 = new Antwoorden(true, "maaltijd");
+        Vragen vraag22 = new Vragen("hangman", "Na welk moment in de dag is het aanbevolen om metformine in te nemen?",
                 List.of(a85), null);
 
         // --- 23 ---
-        Antwoorden a89 = new Antwoorden(true, "Stimuleert insulinesecretie uit de β-cellen");
-        Vragen vraag23 = new Vragen("hangman", "Wat is het werkingsmechanisme van sulfonylurea?",
+        Antwoorden a89 = new Antwoorden(true, "insulinesecretie");
+        Vragen vraag23 = new Vragen("hangman", "Wat stimuleert sulfonylurea in de β-cellen?",
                 List.of(a89), null);
 
         // --- 24 ---
-        Antwoorden a93 = new Antwoorden(true, "Hypoglycemie en gewichtstoename");
-        Vragen vraag24 = new Vragen("hangman", "Wat zijn typische nevenwerkingen van sulfonylurea?",
+        Antwoorden a93 = new Antwoorden(true, "Hypoglycemie");
+        Vragen vraag24 = new Vragen("hangman", "Wat is een typische nevenwerking van sulfonylurea?",
                 List.of(a93), null);
 
         // --- 25 ---
@@ -238,13 +238,13 @@ public class DbInitializer {
                 List.of(a105), null);
 
         // --- 28 ---
-        Antwoorden a109 = new Antwoorden(true, "Vermindert gewicht en bloeddruk");
-        Vragen vraag28 = new Vragen("hangman", "Wat is een bijkomend gunstig effect van GLP-1 receptoragonisten?",
+        Antwoorden a109 = new Antwoorden(true, "bloeddruk");
+        Vragen vraag28 = new Vragen("hangman", "Wat verlaagd er door GLP-1 receptoragonisten?",
                 List.of(a109), null);
 
         // --- 29 ---
-        Antwoorden a113 = new Antwoorden(true, "GLP-1 RA heeft cardiovasculaire voordelen");
-        Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
+        Antwoorden a113 = new Antwoorden(true, "cardiovasculair");
+        Vragen vraag29 = new Vragen("hangman", "Wat voor type voordelen tonen studies aan over GLP-1 RA?",
                 List.of(a113), null);
 
         // --- 30 ---
