@@ -2,7 +2,6 @@ package be.ucll.controller;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +26,12 @@ public class VragenController {
     @GetMapping("/all")
     public List<Vragen> getAll() {
         return vragenService.getAll();
+    }
+
+
+    @GetMapping("/random20")
+    public List<Vragen> get20RandomQuestions() {
+        return vragenService.get20RandomQuestions();
     }
     
 }

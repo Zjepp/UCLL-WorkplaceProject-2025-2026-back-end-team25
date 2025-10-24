@@ -26,4 +26,8 @@ public class VragenService {
         return vragenRepository.findAll();
     }
 
+    public List<Vragen> get20RandomQuestions() {
+        return vragenRepository.find20RandomQuestions();
+    }
+
 }
