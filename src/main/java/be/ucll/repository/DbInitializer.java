@@ -125,7 +125,7 @@ public class DbInitializer {
         Antwoorden a42 = new Antwoorden(false, "Overmatige glucagonproductie");
         Antwoorden a43 = new Antwoorden(false, "Teveel vetopslag in de pancreas");
         Antwoorden a44 = new Antwoorden(false, "Onvoldoende koolhydraatinname");
-        Vragen vraag11 = new Vragen("standaard-choice", "Wat is de primaire oorzaak van type 1 diabetes mellitus?",
+        Vragen vraag11 = new Vragen("memory-choice", "Wat is de primaire oorzaak van type 1 diabetes mellitus?",
                 List.of(a41, a42, a43, a44), null);
 
         // --- 12 ---
@@ -133,7 +133,7 @@ public class DbInitializer {
         Antwoorden a46 = new Antwoorden(false, "Insuline verlaagt de incretineproductie");
         Antwoorden a47 = new Antwoorden(false, "Incretines remmen de insulinesecretie");
         Antwoorden a48 = new Antwoorden(false, "Incretines veroorzaken hypoglycemie");
-        Vragen vraag12 = new Vragen("standaard-choice", "Wat doen incretinehormonen in de regulatie van glucose?",
+        Vragen vraag12 = new Vragen("memory-choice", "Wat doen incretinehormonen in de regulatie van glucose?",
                 List.of(a45, a46, a47, a48), null);
 
         // --- 13 ---
@@ -141,7 +141,7 @@ public class DbInitializer {
         Antwoorden a50 = new Antwoorden(false, "Het effect van insuline op vetafbraak");
         Antwoorden a51 = new Antwoorden(false, "De hoeveelheid glycogeen in de lever");
         Antwoorden a52 = new Antwoorden(false, "De opname van glucose in de spieren");
-        Vragen vraag13 = new Vragen("standaard-choice", "Wat beschrijft het incretine-effect?", List.of(a49, a50, a51, a52),
+        Vragen vraag13 = new Vragen("memory-choice", "Wat beschrijft het incretine-effect?", List.of(a49, a50, a51, a52),
                 null);
 
         // --- 14 ---
@@ -149,7 +149,7 @@ public class DbInitializer {
         Antwoorden a54 = new Antwoorden(false, "Het incretine-effect is verhoogd");
         Antwoorden a55 = new Antwoorden(false, "Er is geen verschil");
         Antwoorden a56 = new Antwoorden(false, "Het hangt af van het geslacht");
-        Vragen vraag14 = new Vragen("standaard-choice", "Hoe is het incretine-effect bij patiënten met type 2 diabetes?",
+        Vragen vraag14 = new Vragen("memory-choice", "Hoe is het incretine-effect bij patiënten met type 2 diabetes?",
                 List.of(a53, a54, a55, a56), null);
 
         // --- 15 ---
@@ -157,7 +157,7 @@ public class DbInitializer {
         Antwoorden a58 = new Antwoorden(false, "Metformine, Empagliflozine, Glibenclamide");
         Antwoorden a59 = new Antwoorden(false, "Insuline, Glucagon, Adrenaline");
         Antwoorden a60 = new Antwoorden(false, "Dapagliflozine, Semaglutide, Liraglutide");
-        Vragen vraag15 = new Vragen("standaard-choice", "Wat zijn voorbeelden van DPP-4 inhibitoren?",
+        Vragen vraag15 = new Vragen("memory-choice", "Wat zijn voorbeelden van DPP-4 inhibitoren?",
                 List.of(a57, a58, a59, a60), null);
 
         // --- 16 ---
@@ -165,7 +165,7 @@ public class DbInitializer {
         Antwoorden a62 = new Antwoorden(false, "Metformine, Glibenclamide, Sitagliptine");
         Antwoorden a63 = new Antwoorden(false, "Dapagliflozine, Canagliflozine, Empagliflozine");
         Antwoorden a64 = new Antwoorden(false, "Insuline lispro, NPH, Glargine");
-        Vragen vraag16 = new Vragen("standaard-choice", "Wat zijn voorbeelden van GLP-1 receptoragonisten?",
+        Vragen vraag16 = new Vragen("memory-choice", "Wat zijn voorbeelden van GLP-1 receptoragonisten?",
                 List.of(a61, a62, a63, a64), null);
 
         // --- 17 ---
@@ -173,7 +173,7 @@ public class DbInitializer {
         Antwoorden a66 = new Antwoorden(false, "Liraglutide, Dulaglutide, Semaglutide");
         Antwoorden a67 = new Antwoorden(false, "Metformine, Pioglitazone, Acarbose");
         Antwoorden a68 = new Antwoorden(false, "Sitagliptine, Linagliptine, Alogliptine");
-        Vragen vraag17 = new Vragen("standaard-choice", "Wat zijn voorbeelden van SGLT2-inhibitoren?",
+        Vragen vraag17 = new Vragen("memory-choice", "Wat zijn voorbeelden van SGLT2-inhibitoren?",
                 List.of(a65, a66, a67, a68), null);
 
         // --- 18 ---
@@ -181,7 +181,7 @@ public class DbInitializer {
         Antwoorden a70 = new Antwoorden(false, "Een SGLT2-remmer verhoogt de insulineproductie");
         Antwoorden a71 = new Antwoorden(false, "Een SGLT2-remmer verhoogt de glucagonsecretie");
         Antwoorden a72 = new Antwoorden(false, "Een SGLT2-remmer verhoogt de eetlust");
-        Vragen vraag18 = new Vragen("standaard-choice", "Wat is het werkingsmechanisme van een SGLT2-remmer?",
+        Vragen vraag18 = new Vragen("memory-choice", "Wat is het werkingsmechanisme van een SGLT2-remmer?",
                 List.of(a69, a70, a71, a72), null);
 
         // --- 19 ---
@@ -189,7 +189,7 @@ public class DbInitializer {
         Antwoorden a74 = new Antwoorden(false, "Type 1 diabetes veroorzaakt de meeste nierinsufficiënties");
         Antwoorden a75 = new Antwoorden(false, "Hypertensie is de belangrijkste oorzaak");
         Antwoorden a76 = new Antwoorden(false, "Er is geen verband tussen diabetes en nierfalen");
-        Vragen vraag19 = new Vragen("standaard-choice",
+        Vragen vraag19 = new Vragen("memory-choice",
                 "Wat is de belangrijkste oorzaak van chronische nierinsufficiëntie wereldwijd?",
                 List.of(a73, a74, a75, a76), null);
 
@@ -198,7 +198,7 @@ public class DbInitializer {
         Antwoorden a78 = new Antwoorden(false, "Meer dan 100 ml/min/1.73m²");
         Antwoorden a79 = new Antwoorden(false, "Tussen 70 en 90 ml/min/1.73m²");
         Antwoorden a80 = new Antwoorden(false, "Tussen 120 en 150 ml/min/1.73m²");
-        Vragen vraag20 = new Vragen("standaard-choice", "Bij welke eGFR spreken we van nierinsufficiëntie?",
+        Vragen vraag20 = new Vragen("memory-choice", "Bij welke eGFR spreken we van nierinsufficiëntie?",
                 List.of(a77, a78, a79, a80), null);
 
         // --- 21 ---
@@ -206,7 +206,7 @@ public class DbInitializer {
         Antwoorden a82 = new Antwoorden(false, "Hoge koorts en keelpijn");
         Antwoorden a83 = new Antwoorden(false, "Sterke toename van eetlust");
         Antwoorden a84 = new Antwoorden(false, "Daling van de bloeddruk");
-        Vragen vraag21 = new Vragen("standaard-choice",
+        Vragen vraag21 = new Vragen("hangman",
                 "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?", List.of(a81, a82, a83, a84),
                 null);
 
@@ -215,7 +215,7 @@ public class DbInitializer {
         Antwoorden a86 = new Antwoorden(false, "Op een lege maag met een glas melk");
         Antwoorden a87 = new Antwoorden(false, "Altijd ’s avonds voor het slapengaan");
         Antwoorden a88 = new Antwoorden(false, "Altijd gecombineerd met insuline");
-        Vragen vraag22 = new Vragen("standaard-choice", "Wat is de aanbevolen manier om metformine in te nemen?",
+        Vragen vraag22 = new Vragen("hangman", "Wat is de aanbevolen manier om metformine in te nemen?",
                 List.of(a85, a86, a87, a88), null);
 
         // --- 23 ---
@@ -223,7 +223,7 @@ public class DbInitializer {
         Antwoorden a90 = new Antwoorden(false, "Verlaagt de glucoseabsorptie in de darm");
         Antwoorden a91 = new Antwoorden(false, "Remt de glucagonproductie");
         Antwoorden a92 = new Antwoorden(false, "Vertraagt de maaglediging");
-        Vragen vraag23 = new Vragen("standaard-choice", "Wat is het werkingsmechanisme van sulfonylurea?",
+        Vragen vraag23 = new Vragen("hangman", "Wat is het werkingsmechanisme van sulfonylurea?",
                 List.of(a89, a90, a91, a92), null);
 
         // --- 24 ---
@@ -231,7 +231,7 @@ public class DbInitializer {
         Antwoorden a94 = new Antwoorden(false, "Hoofdpijn en hyperventilatie");
         Antwoorden a95 = new Antwoorden(false, "Nierkolieken en diarree");
         Antwoorden a96 = new Antwoorden(false, "Koorts en huiduitslag");
-        Vragen vraag24 = new Vragen("standaard-choice", "Wat zijn typische nevenwerkingen van sulfonylurea?",
+        Vragen vraag24 = new Vragen("hangman", "Wat zijn typische nevenwerkingen van sulfonylurea?",
                 List.of(a93, a94, a95, a96), null);
 
         // --- 25 ---
@@ -239,7 +239,7 @@ public class DbInitializer {
         Antwoorden a98 = new Antwoorden(false, "Aan te raden bij leverinsufficiëntie");
         Antwoorden a99 = new Antwoorden(false, "Veilig tijdens zwangerschap");
         Antwoorden a100 = new Antwoorden(false, "Mag gecombineerd met GLP-1 agonisten");
-        Vragen vraag25 = new Vragen("standaard-choice", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
+        Vragen vraag25 = new Vragen("hangman", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
                 List.of(a97, a98, a99, a100), null);
 
         // --- 26 ---
@@ -247,7 +247,7 @@ public class DbInitializer {
         Antwoorden a102 = new Antwoorden(false, "Verhoogt HbA1c gemiddeld met 1%");
         Antwoorden a103 = new Antwoorden(false, "Heeft geen effect op HbA1c");
         Antwoorden a104 = new Antwoorden(false, "Verhoogt het risico op hypoglycemie sterk");
-        Vragen vraag26 = new Vragen("memory-choice", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
+        Vragen vraag26 = new Vragen("hangman", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
                 List.of(a101, a102, a103, a104), null);
 
         // --- 27 ---
@@ -255,7 +255,7 @@ public class DbInitializer {
         Antwoorden a106 = new Antwoorden(false, "Sterk gewichtverhogend");
         Antwoorden a107 = new Antwoorden(false, "Niet veilig bij ouderen");
         Antwoorden a108 = new Antwoorden(false, "Leidt vaak tot hypoglycemie");
-        Vragen vraag27 = new Vragen("memory-choice", "Wat is een voordeel van DPP-4 inhibitoren?",
+        Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
                 List.of(a105, a106, a107, a108), null);
 
         // --- 28 ---
@@ -263,7 +263,7 @@ public class DbInitializer {
         Antwoorden a110 = new Antwoorden(false, "Verhoogt de eetlust");
         Antwoorden a111 = new Antwoorden(false, "Verhoogt LDL-cholesterol");
         Antwoorden a112 = new Antwoorden(false, "Verhoogt hartfrequentie zonder nut");
-        Vragen vraag28 = new Vragen("memory-choice", "Wat is een bijkomend gunstig effect van GLP-1 receptoragonisten?",
+        Vragen vraag28 = new Vragen("hangman", "Wat is een bijkomend gunstig effect van GLP-1 receptoragonisten?",
                 List.of(a109, a110, a111, a112), null);
 
         // --- 29 ---
@@ -271,7 +271,7 @@ public class DbInitializer {
         Antwoorden a114 = new Antwoorden(false, "GLP-1 RA verhoogt risico op infarct");
         Antwoorden a115 = new Antwoorden(false, "GLP-1 RA heeft geen invloed op hartziekten");
         Antwoorden a116 = new Antwoorden(false, "GLP-1 RA verlaagt enkel bloeddruk");
-        Vragen vraag29 = new Vragen("memory-choice", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
+        Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
                 List.of(a113, a114, a115, a116), null);
 
         // --- 30 ---
@@ -279,7 +279,7 @@ public class DbInitializer {
         Antwoorden a118 = new Antwoorden(false, "Meer dan 2 dagen: dubbele dosis zetten");
         Antwoorden a119 = new Antwoorden(false, "Altijd wachten tot volgende week");
         Antwoorden a120 = new Antwoorden(false, "Altijd contact opnemen met spoedarts");
-        Vragen vraag30 = new Vragen("memory-choice", "Wat doe je bij een gemiste Ozempic® injectie?",
+        Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
                 List.of(a117, a118, a119, a120), null);
 
         // --- 31 ---
@@ -287,7 +287,7 @@ public class DbInitializer {
         Antwoorden a122 = new Antwoorden(false, "Direct na het ontbijt");
         Antwoorden a123 = new Antwoorden(false, "Voor het slapengaan met melk");
         Antwoorden a124 = new Antwoorden(false, "Na de lunch");
-        Vragen vraag31 = new Vragen("memory-choice", "Wanneer moet Rybelsus® (orale semaglutide) worden ingenomen?",
+        Vragen vraag31 = new Vragen("connect-choice", "Wanneer moet Rybelsus® (orale semaglutide) worden ingenomen?",
                 List.of(a121, a122, a123, a124), null);
 
         // --- 32 ---
@@ -295,7 +295,7 @@ public class DbInitializer {
         Antwoorden a126 = new Antwoorden(false, "Met minstens 500 ml water");
         Antwoorden a127 = new Antwoorden(false, "Met vruchtensap voor betere opname");
         Antwoorden a128 = new Antwoorden(false, "Tablet eerst breken voor opname");
-        Vragen vraag32 = new Vragen("memory-choice", "Hoe moet Rybelsus® worden ingenomen volgens voorschrift?",
+        Vragen vraag32 = new Vragen("connect-choice", "Hoe moet Rybelsus® worden ingenomen volgens voorschrift?",
                 List.of(a125, a126, a127, a128), null);
 
         // --- 33 ---
@@ -303,7 +303,7 @@ public class DbInitializer {
         Antwoorden a130 = new Antwoorden(false, "Onmiddellijk ontbijten na inname");
         Antwoorden a131 = new Antwoorden(false, "Minstens 10 minuten wachten");
         Antwoorden a132 = new Antwoorden(false, "Minstens 2 uur vasten voor inname");
-        Vragen vraag33 = new Vragen("memory-choice", "Wat is belangrijk na inname van orale semaglutide (Rybelsus®)?",
+        Vragen vraag33 = new Vragen("connect-choice", "Wat is belangrijk na inname van orale semaglutide (Rybelsus®)?",
                 List.of(a129, a130, a131, a132), null);
 
         // --- 34 ---
@@ -311,7 +311,7 @@ public class DbInitializer {
         Antwoorden a134 = new Antwoorden(false, "Slaperigheid en spierpijn");
         Antwoorden a135 = new Antwoorden(false, "Hyperventilatie en tachycardie");
         Antwoorden a136 = new Antwoorden(false, "Hoofdpijn en diarree");
-        Vragen vraag34 = new Vragen("memory-choice",
+        Vragen vraag34 = new Vragen("connect-choice",
                 "Wat is de meest voorkomende nevenwerking van GLP-1 receptoragonisten?",
                 List.of(a133, a134, a135, a136), null);
 
@@ -320,7 +320,7 @@ public class DbInitializer {
         Antwoorden a138 = new Antwoorden(false, "Zoutrijke voeding en veel frisdrank");
         Antwoorden a139 = new Antwoorden(false, "Koolhydraatrijke snacks");
         Antwoorden a140 = new Antwoorden(false, "Koffie en alcohol bij elke maaltijd");
-        Vragen vraag35 = new Vragen("memory-choice",
+        Vragen vraag35 = new Vragen("connect-choice",
                 "Welke voedingsadviezen helpen bij GLP-1-gerelateerde misselijkheid?", List.of(a137, a138, a139, a140),
                 null);
 
@@ -329,7 +329,7 @@ public class DbInitializer {
         Antwoorden a142 = new Antwoorden(false, "30 minuten per maand");
         Antwoorden a143 = new Antwoorden(false, "Alleen krachttraining");
         Antwoorden a144 = new Antwoorden(false, "Enkel wandelen bij nuchtere glycemie");
-        Vragen vraag36 = new Vragen("memory-choice",
+        Vragen vraag36 = new Vragen("connect-choice",
                 "Wat is de aanbevolen hoeveelheid fysieke activiteit per week bij diabetes?",
                 List.of(a141, a142, a143, a144), null);
 
@@ -338,7 +338,7 @@ public class DbInitializer {
         Antwoorden a146 = new Antwoorden(false, "10% gewichtstoename verlaagt risico");
         Antwoorden a147 = new Antwoorden(false, "Gewicht heeft geen invloed op CV-risico");
         Antwoorden a148 = new Antwoorden(false, "Gewichtsverlies verhoogt LDL-cholesterol");
-        Vragen vraag37 = new Vragen("memory-choice",
+        Vragen vraag37 = new Vragen("connect-choice",
                 "Wat is het effect van gewichtsverlies op cardiovasculaire risico’s bij diabetes?",
                 List.of(a145, a146, a147, a148), null);
 
@@ -348,7 +348,7 @@ public class DbInitializer {
         Antwoorden a150 = new Antwoorden(false, "Hart- en vaatziekten spelen zelden een rol bij diabetes");
         Antwoorden a151 = new Antwoorden(false, "Leverziekten zijn de belangrijkste doodsoorzaak");
         Antwoorden a152 = new Antwoorden(false, "Diabetes vermindert het risico op infarct");
-        Vragen vraag38 = new Vragen("memory-choice", "Wat is de belangrijkste doodsoorzaak bij diabetespatiënten?",
+        Vragen vraag38 = new Vragen("connect-choice", "Wat is de belangrijkste doodsoorzaak bij diabetespatiënten?",
                 List.of(a149, a150, a151, a152), null);
 
         // --- 39 ---
@@ -356,7 +356,7 @@ public class DbInitializer {
         Antwoorden a154 = new Antwoorden(false, "SGLT2-remmers verhogen risico op hartfalen");
         Antwoorden a155 = new Antwoorden(false, "SGLT2-remmers beïnvloeden het hart niet");
         Antwoorden a156 = new Antwoorden(false, "SGLT2-remmers veroorzaken hypertensie");
-        Vragen vraag39 = new Vragen("memory-choice", "Wat is het effect van SGLT2-inhibitoren op hartfalen?",
+        Vragen vraag39 = new Vragen("connect-choice", "Wat is het effect van SGLT2-inhibitoren op hartfalen?",
                 List.of(a153, a154, a155, a156), null);
 
         // --- 40 ---
@@ -364,7 +364,7 @@ public class DbInitializer {
         Antwoorden a158 = new Antwoorden(false, "Astma");
         Antwoorden a159 = new Antwoorden(false, "Leverfibrose");
         Antwoorden a160 = new Antwoorden(false, "Maagzweren");
-        Vragen vraag40 = new Vragen("memory-choice", "Welke complicatie treedt vaak op bij diabetes en beïnvloedt eGFR?",
+        Vragen vraag40 = new Vragen("connect-choice", "Welke complicatie treedt vaak op bij diabetes en beïnvloedt eGFR?",
                 List.of(a157, a158, a159, a160), null);
 
         // --- 41 ---
@@ -372,7 +372,7 @@ public class DbInitializer {
         Antwoorden a162 = new Antwoorden(false, "Altijd onomkeerbaar");
         Antwoorden a163 = new Antwoorden(false, "Enkel omkeerbaar met bariatrische chirurgie");
         Antwoorden a164 = new Antwoorden(false, "Nooit klinisch relevant");
-        Vragen vraag41 = new Vragen("memory-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
+        Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
                 List.of(a161, a162, a163, a164), null);
 
         // --- 42 ---
@@ -380,7 +380,7 @@ public class DbInitializer {
         Antwoorden a166 = new Antwoorden(false, "Tirzepatide is een insuline-analoge spray");
         Antwoorden a167 = new Antwoorden(false, "Tirzepatide is een orale SGLT2-remmer");
         Antwoorden a168 = new Antwoorden(false, "Tirzepatide is een DPP-4 remmer");
-        Vragen vraag42 = new Vragen("memory-choice", "Wat is tirzepatide (Mounjaro)?", List.of(a165, a166, a167, a168),
+        Vragen vraag42 = new Vragen("connect-choice", "Wat is tirzepatide (Mounjaro)?", List.of(a165, a166, a167, a168),
                 null);
 
         // --- 43 ---
@@ -388,7 +388,7 @@ public class DbInitializer {
         Antwoorden a170 = new Antwoorden(false, "Kleinere HbA1c-daling dan metformine");
         Antwoorden a171 = new Antwoorden(false, "Geen effect op gewicht");
         Antwoorden a172 = new Antwoorden(false, "Enkel effect bij type 1 diabetes");
-        Vragen vraag43 = new Vragen("memory-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
+        Vragen vraag43 = new Vragen("connect-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
                 List.of(a169, a170, a171, a172), null);
 
         // --- 44 ---
@@ -396,7 +396,7 @@ public class DbInitializer {
         Antwoorden a174 = new Antwoorden(false, "Gewichtsverlies heeft geen effect op HbA1c");
         Antwoorden a175 = new Antwoorden(false, "Gewichtsverlies is enkel cosmetisch");
         Antwoorden a176 = new Antwoorden(false, "Gewichtsverlies vermindert spiermassa zonder nut");
-        Vragen vraag44 = new Vragen("memory-choice", "Wat is het verband tussen gewichtsverlies en HbA1c?",
+        Vragen vraag44 = new Vragen("connect-choice", "Wat is het verband tussen gewichtsverlies en HbA1c?",
                 List.of(a173, a174, a175, a176), null);
 
         // --- 45 ---
@@ -404,14 +404,14 @@ public class DbInitializer {
         Antwoorden a178 = new Antwoorden(false, "Orforglipron is een insulinepomp");
         Antwoorden a179 = new Antwoorden(false, "Orforglipron is een vetzuurremmer");
         Antwoorden a180 = new Antwoorden(false, "Orforglipron is een DPP-4 remmer");
-        Vragen vraag45 = new Vragen("memory-choice", "Wat is orforglipron?", List.of(a177, a178, a179, a180), null);
+        Vragen vraag45 = new Vragen("connect-choice", "Wat is orforglipron?", List.of(a177, a178, a179, a180), null);
 
         // --- 46 ---
         Antwoorden a181 = new Antwoorden(true, "GLP-1, GIP en glucagon receptoragonist");
         Antwoorden a182 = new Antwoorden(false, "Alleen GLP-1 receptoragonist");
         Antwoorden a183 = new Antwoorden(false, "Alleen DPP-4 inhibitor");
         Antwoorden a184 = new Antwoorden(false, "SGLT2-inhibitor");
-        Vragen vraag46 = new Vragen("memory-choice", "Wat is het werkingsmechanisme van retatrutide?",
+        Vragen vraag46 = new Vragen("connect-choice", "Wat is het werkingsmechanisme van retatrutide?",
                 List.of(a181, a182, a183, a184), null);
 
         // --- 47 ---
@@ -419,7 +419,7 @@ public class DbInitializer {
         Antwoorden a186 = new Antwoorden(false, "HbA1c < 6.5% en BMI ≥ 25 kg/m²");
         Antwoorden a187 = new Antwoorden(false, "HbA1c > 9% en BMI ≥ 35 kg/m²");
         Antwoorden a188 = new Antwoorden(false, "HbA1c tussen 5 en 6%");
-        Vragen vraag47 = new Vragen("memory-choice", "Wat zijn de Belgische terugbetalingsvoorwaarden voor GLP-1 RA?",
+        Vragen vraag47 = new Vragen("connect-choice", "Wat zijn de Belgische terugbetalingsvoorwaarden voor GLP-1 RA?",
                 List.of(a185, a186, a187, a188), null);
 
         // --- 48 ---
@@ -427,7 +427,7 @@ public class DbInitializer {
         Antwoorden a190 = new Antwoorden(false, "HbA1c > 10%");
         Antwoorden a191 = new Antwoorden(false, "HbA1c < 6%");
         Antwoorden a192 = new Antwoorden(false, "Geen HbA1c-voorwaarde");
-        Vragen vraag48 = new Vragen("memory-choice",
+        Vragen vraag48 = new Vragen("connect-choice",
                 "Wat is de HbA1c-voorwaarde voor SGLT2-inhibitor terugbetaling in België?",
                 List.of(a189, a190, a191, a192), null);
 
@@ -436,7 +436,7 @@ public class DbInitializer {
         Antwoorden a194 = new Antwoorden(false, "Een eGFR < 30 ml/min");
         Antwoorden a195 = new Antwoorden(false, "Een HbA1c < 6%");
         Antwoorden a196 = new Antwoorden(false, "Een BMI < 25 kg/m²");
-        Vragen vraag49 = new Vragen("memory-choice",
+        Vragen vraag49 = new Vragen("connect-choice",
                 "Wat is de eGFR-voorwaarde voor gebruik van SGLT2-inhibitoren in België?",
                 List.of(a193, a194, a195, a196), null);
 
@@ -445,7 +445,7 @@ public class DbInitializer {
         Antwoorden a198 = new Antwoorden(false, "1 educatie per maand verplicht");
         Antwoorden a199 = new Antwoorden(false, "Educatie enkel door arts");
         Antwoorden a200 = new Antwoorden(false, "Educatie niet terugbetaald in België");
-        Vragen vraag50 = new Vragen("memory-choice", "Wat voorziet het Belgische starttraject diabetes inzake educatie?",
+        Vragen vraag50 = new Vragen("connect-choice", "Wat voorziet het Belgische starttraject diabetes inzake educatie?",
                 List.of(a197, a198, a199, a200), null);
 
         vragenRepository.save(vraag1);
