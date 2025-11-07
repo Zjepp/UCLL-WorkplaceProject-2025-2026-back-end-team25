@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import be.ucll.model.Antwoorden;
+import be.ucll.model.Faq;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
@@ -21,14 +22,17 @@ public class DbInitializer {
     private VragenRepository vragenRepository;
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
+    private FaqRepository faqRepository;
 
     @Autowired
     public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
-            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository) {
+            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository,
+            FaqRepository faqRepository) {
         this.userRepository = userRepository;
         this.vragenRepository = vragenRepository;
         this.antwoordenRepository = antwoordenRepository;
         this.resultaatRepository = resultaatRepository;
+        this.faqRepository = faqRepository;
     }
 
     @PostConstruct
@@ -666,5 +670,14 @@ public class DbInitializer {
 
         // Save resultaat (this will link user + vraag)
         resultaatRepository.save(r1);
+
+        // Initialize FAQ data
+        Faq faq1 = new Faq("Is deze app betalend?", "ja deze app is betalend");
+        Faq faq2 = new Faq("Hoe kan ik mijn wachtwoord resetten?", "Klik op \"wachtwoord vergeten\" op de loginpagina");
+        Faq faq3 = new Faq("Kan ik de app offline gebruiken?", "Nee, je hebt een internetverbinding nodig om de quiz te spelen");
+        
+        faqRepository.save(faq1);
+        faqRepository.save(faq2);
+        faqRepository.save(faq3);
     };
 }
