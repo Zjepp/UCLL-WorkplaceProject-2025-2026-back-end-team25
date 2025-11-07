@@ -222,20 +222,20 @@ public class DbInitializer {
         Vragen vraag24 = new Vragen("hangman", "Wat is een typische nevenwerking van sulfonylurea?",
                 List.of(a93), null);
 
-        // --- 25 ---
-        Antwoorden a97 = new Antwoorden(true, "Niet gebruiken bij GFR < 30 ml/min");
-        Vragen vraag25 = new Vragen("hangman", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
-                List.of(a97), null);
+        // // --- 25 ---
+        // Antwoorden a97 = new Antwoorden(true, "Niet gebruiken bij GFR < 30 ml/min");
+        // Vragen vraag25 = new Vragen("hangman", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
+        //         List.of(a97), null);
 
         // --- 26 ---
-        Antwoorden a101 = new Antwoorden(true, "Verlaagt HbA1c gemiddeld met 0,6% tot 2%");
-        Vragen vraag26 = new Vragen("hangman", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
-                List.of(a101), null);
+        // Antwoorden a101 = new Antwoorden(true, "Verlaagt HbA1c gemiddeld met 0,6% tot 2%");
+        // Vragen vraag26 = new Vragen("hangman", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
+        //         List.of(a101), null);
 
         // --- 27 ---
-        Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en gewichtsneutraal");
-        Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
-                List.of(a105), null);
+        // Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en gewichtsneutraal");
+        // Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
+        //         List.of(a105), null);
 
         // --- 28 ---
         Antwoorden a109 = new Antwoorden(true, "bloeddruk");
@@ -248,9 +248,9 @@ public class DbInitializer {
                 List.of(a113), null);
 
         // --- 30 ---
-        Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
-        Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
-                List.of(a117), null);
+        // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
+        // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
+        //         List.of(a117), null);
 
         // --- 31 ---
         Antwoorden a121 = new Antwoorden(true, "Minstens 30 minuten voor het ontbijt");
@@ -629,12 +629,12 @@ public class DbInitializer {
         vragenRepository.save(vraag22);
         vragenRepository.save(vraag23);
         vragenRepository.save(vraag24);
-        vragenRepository.save(vraag25);
-        vragenRepository.save(vraag26);
-        vragenRepository.save(vraag27);
+        // vragenRepository.save(vraag25);
+        // vragenRepository.save(vraag26);
+        // vragenRepository.save(vraag27);
         vragenRepository.save(vraag28);
         vragenRepository.save(vraag29);
-        vragenRepository.save(vraag30);
+        // vragenRepository.save(vraag30);
         vragenRepository.save(vraag31);
         vragenRepository.save(vraag32);
         vragenRepository.save(vraag33);
