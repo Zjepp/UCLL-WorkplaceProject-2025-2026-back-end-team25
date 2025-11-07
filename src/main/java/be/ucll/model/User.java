@@ -33,6 +33,11 @@ public class User {
     @JsonManagedReference(value = "user-resultaat")
     private List<Resultaat> resultaat = new ArrayList<>();
 
+    public enum Role {
+        ADMIN,
+        USER
+    }
+
 
     public User () {}
 
