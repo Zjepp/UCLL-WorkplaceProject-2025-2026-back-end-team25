@@ -12,6 +12,7 @@ import be.ucll.model.Antwoorden;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -657,7 +658,7 @@ public class DbInitializer {
         vragenRepository.save(vraag50);
 
         // Now create user and result (linking them after question exists)
-        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
+        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
         Resultaat r1 = new Resultaat("Souleyman");
