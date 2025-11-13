@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import be.ucll.DTO.AuthDTO;
+import be.ucll.DTO.LoginDTO;
 import be.ucll.DTO.LoginResponseDTO;
 import be.ucll.model.User;
 import be.ucll.model.User.Role;
@@ -26,7 +27,7 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtUtils jwtUtils;
-    public LoginResponseDTO authenticate(AuthDTO authDTO) throws Exception {
+    public LoginResponseDTO authenticate(LoginDTO authDTO) throws Exception {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(authDTO.email(), authDTO.password()));
             System.out.println("User Out:"+userRepository.findByEmail(authDTO.email()));

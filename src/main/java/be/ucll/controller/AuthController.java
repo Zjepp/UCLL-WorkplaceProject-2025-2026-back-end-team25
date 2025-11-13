@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import be.ucll.DTO.AuthDTO;
+import be.ucll.DTO.LoginDTO;
 import be.ucll.DTO.LoginResponseDTO;
 import be.ucll.model.DomainException;
 import be.ucll.service.AuthService;
@@ -66,7 +67,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody AuthDTO authRequest) {
+    public ResponseEntity<Object> login(@RequestBody LoginDTO authRequest) {
         try {
             LoginResponseDTO authenticatedUser = authService.authenticate(authRequest);
             return ResponseEntity.ok(authenticatedUser);
