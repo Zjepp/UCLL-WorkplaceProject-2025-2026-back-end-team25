@@ -21,9 +21,9 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        # PostgreSQL connection - UPDATE THESE WITH YOUR OKD POSTGRESQL SERVICE
+        # PostgreSQL connection
         - name: DATABASE_URL
-          value: "jdbc:postgresql://postgresql-service:5432/IPSA_VZW"
+          value: "jdbc:postgresql://postgresql:5432/IPSA_VZW"
         - name: DATABASE_USERNAME
           value: "postgres"
         - name: DATABASE_PASSWORD
