@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import be.ucll.model.Vragen;
 import be.ucll.service.AntwoordenService;
 import be.ucll.service.VragenService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/vragen")
@@ -29,9 +31,14 @@ public class VragenController {
     }
 
 
-    @GetMapping("/random20")
-    public List<Vragen> get20RandomQuestions() {
-        return vragenService.get20RandomQuestions();
+    @GetMapping("/random18")
+    public List<Vragen> get18RandomQuestions() {
+        return vragenService.get18RandomQuestions();
+    }
+    
+    @GetMapping("/random8")
+    public List<Vragen> get8RandomQuestions() {
+        return vragenService.get8RandomQuestions();
     }
     
 }
