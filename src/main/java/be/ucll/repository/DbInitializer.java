@@ -675,5 +675,14 @@ public class DbInitializer {
 
         // Save resultaat (this will link user + vraag)
         resultaatRepository.save(r1);
+
+        // Initialize FAQ data
+        Faq faq1 = new Faq("Is deze app betalend?", "ja deze app is betalend");
+        Faq faq2 = new Faq("Hoe kan ik mijn wachtwoord resetten?", "Klik op \"wachtwoord vergeten\" op de loginpagina");
+        Faq faq3 = new Faq("Kan ik de app offline gebruiken?", "Nee, je hebt een internetverbinding nodig om de quiz te spelen");
+        
+        faqRepository.save(faq1);
+        faqRepository.save(faq2);
+        faqRepository.save(faq3);
     };
 }
