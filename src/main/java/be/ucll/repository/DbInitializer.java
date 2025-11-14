@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import be.ucll.model.Antwoorden;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -21,6 +23,8 @@ public class DbInitializer {
     private VragenRepository vragenRepository;
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
@@ -657,14 +661,14 @@ public class DbInitializer {
         vragenRepository.save(vraag50);
 
         // Now create user and result (linking them after question exists)
-        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
+        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
-        Resultaat r1 = new Resultaat("Souleyman");
-        r1.setUser(user1);
-        r1.setVraag(vraag3);
+        // Resultaat r1 = new Resultaat("Souleyman");
+        // r1.setUser(user1);
+        // r1.setVraag(vraag3);
 
-        // Save resultaat (this will link user + vraag)
-        resultaatRepository.save(r1);
+        // // Save resultaat (this will link user + vraag)
+        // resultaatRepository.save(r1);
     };
 }

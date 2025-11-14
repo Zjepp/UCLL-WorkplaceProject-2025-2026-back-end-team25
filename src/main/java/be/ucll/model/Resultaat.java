@@ -36,23 +36,28 @@ public class Resultaat {
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
-        setResultaat(resultaat);
+        this.setResultaat(resultaat);
     }
 
     public void setResultaat(String resultaat) {
-        if (!resultaat.endsWith("%")) {
-            throw new IllegalArgumentException();
-        }
-        
-        String numberPart = resultaat.replace("%", "");
-        try {
-            int percentage = Integer.parseInt(numberPart);
-            if (percentage > 100) {
+        if (resultaat == null) {
+            this.resultaat = "";
+            return;
+        } else {
+            if (!resultaat.endsWith("%")) {
                 throw new IllegalArgumentException();
             }
-            this.resultaat = resultaat;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            
+            String numberPart = resultaat.replace("%", "");
+            try {
+                int percentage = Integer.parseInt(numberPart);
+                if (percentage > 100) {
+                    throw new IllegalArgumentException();
+                }
+                this.resultaat = resultaat;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
