@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import be.ucll.model.Antwoorden;
@@ -13,6 +14,7 @@ import be.ucll.model.Faq;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -23,6 +25,8 @@ public class DbInitializer {
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
     private FaqRepository faqRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
@@ -660,24 +664,15 @@ public class DbInitializer {
         vragenRepository.save(vraag49);
         vragenRepository.save(vraag50);
 
-
+        // Now create user and result (linking them after question exists)
         User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
-        userRepository.save(user1);
+        userRepository.save(user1); // persist user to get an ID
 
-        Resultaat r1 = new Resultaat("75%");
+        Resultaat r1 = new Resultaat("Souleyman");
         r1.setUser(user1);
         r1.setVraag(vraag3);
 
-
+        // Save resultaat (this will link user + vraag)
         resultaatRepository.save(r1);
-
-
-        Faq faq1 = new Faq("Is deze app betalend?", "ja deze app is betalend");
-        Faq faq2 = new Faq("Hoe kan ik mijn wachtwoord resetten?", "Klik op \"wachtwoord vergeten\" op de loginpagina");
-        Faq faq3 = new Faq("Kan ik de app offline gebruiken?", "Nee, je hebt een internetverbinding nodig om de quiz te spelen");
-        
-        faqRepository.save(faq1);
-        faqRepository.save(faq2);
-        faqRepository.save(faq3);
     };
 }
