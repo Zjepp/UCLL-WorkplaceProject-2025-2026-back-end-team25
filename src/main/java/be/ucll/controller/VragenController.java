@@ -38,9 +38,9 @@ public class VragenController {
         return vragenService.get18RandomQuestions();
     }
     
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/random8")
     public List<Vragen> get8RandomQuestions() {
         return vragenService.get8RandomQuestions();
     }
-    
 }
