@@ -37,7 +37,7 @@ public class FaqRestController {
         return faqService.getAllFaqs();
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public Faq addFaq(@Valid @RequestBody Faq faq) {
         return faqService.addFaq(faq);
