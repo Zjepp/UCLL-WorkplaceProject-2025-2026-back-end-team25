@@ -6,12 +6,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import be.ucll.model.Antwoorden;
+import be.ucll.model.Faq;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -21,14 +24,20 @@ public class DbInitializer {
     private VragenRepository vragenRepository;
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
+    private FaqRepository faqRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
-            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository) {
+            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository,
+            FaqRepository faqRepository) {
         this.userRepository = userRepository;
         this.vragenRepository = vragenRepository;
         this.antwoordenRepository = antwoordenRepository;
         this.resultaatRepository = resultaatRepository;
+        this.faqRepository = faqRepository;
     }
 
     @PostConstruct
@@ -464,7 +473,7 @@ public class DbInitializer {
         // Antwoorden a162 = new Antwoorden(false, "Altijd onomkeerbaar");
         // Antwoorden a163 = new Antwoorden(false, "Enkel omkeerbaar met bariatrische chirurgie");
         // Antwoorden a164 = new Antwoorden(false, "Nooit klinisch relevant");
-        // Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
+        // Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor diabetes type 2 bij gewichtsverlies?",
         //         List.of(a161, a162, a163, a164), null);
 
         // // --- 42 ---
@@ -479,7 +488,7 @@ public class DbInitializer {
         // Antwoorden a169 = new Antwoorden(true, "Grotere HbA1c-daling dan semaglutide");
         // Antwoorden a170 = new Antwoorden(false, "Kleinere HbA1c-daling dan metformine");
         // Antwoorden a171 = new Antwoorden(false, "Geen effect op gewicht");
-        // Antwoorden a172 = new Antwoorden(false, "Enkel effect bij type 1 diabetes");
+        // Antwoorden a172 = new Antwoorden(false, "Enkel effect bij diabetes type 1");
         // Vragen vraag43 = new Vragen("connect-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
         //         List.of(a169, a170, a171, a172), null);
 
@@ -603,14 +612,23 @@ public class DbInitializer {
         
 
         // Now create user and result (linking them after question exists)
-        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
+        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), User.Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
-        Resultaat r1 = new Resultaat("Souleyman");
+        Resultaat r1 = new Resultaat("75%");
         r1.setUser(user1);
         r1.setVraag(vraag3);
 
         // Save resultaat (this will link user + vraag)
         resultaatRepository.save(r1);
+
+        // Initialize FAQ data
+        Faq faq1 = new Faq("Is deze app betalend?", "ja deze app is betalend");
+        Faq faq2 = new Faq("Hoe kan ik mijn wachtwoord resetten?", "Klik op \"wachtwoord vergeten\" op de loginpagina");
+        Faq faq3 = new Faq("Kan ik de app offline gebruiken?", "Nee, je hebt een internetverbinding nodig om de quiz te spelen");
+        
+        faqRepository.save(faq1);
+        faqRepository.save(faq2);
+        faqRepository.save(faq3);
     };
 }

@@ -2,6 +2,7 @@ package be.ucll.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +26,13 @@ public class VragenController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/all")
     public List<Vragen> getAll() {
         return vragenService.getAll();
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/random18")
     public List<Vragen> get18RandomQuestions() {
         return vragenService.get18RandomQuestions();
