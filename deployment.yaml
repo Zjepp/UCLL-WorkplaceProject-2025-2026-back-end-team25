@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipsa-vzw-backend
+  labels:
+    app: ipsa-vzw-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ipsa-vzw-backend
+  template:
+    metadata:
+      labels:
+        app: ipsa-vzw-backend
+    spec:
+      containers:
+      - name: backend
+        image: ghcr.io/ucll-workplaceproject-2025-2026/back-end-team25:main
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        # PostgreSQL connection - UPDATE THESE WITH YOUR OKD POSTGRESQL SERVICE
+        - name: DATABASE_URL
+          value: "jdbc:postgresql://postgresql-service:5432/IPSA_VZW"
+        - name: DATABASE_USERNAME
+          value: "postgres"
+        - name: DATABASE_PASSWORD
+          value: "postgres"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipsa-vzw-backend
+spec:
+  selector:
+    app: ipsa-vzw-backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ipsa-vzw-backend
+spec:
+  to:
+    kind: Service
+    name: ipsa-vzw-backend
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
