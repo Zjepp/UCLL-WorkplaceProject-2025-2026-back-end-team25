@@ -25,6 +25,7 @@ public class DbInitializer {
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
     private FaqRepository faqRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -665,10 +666,10 @@ public class DbInitializer {
         vragenRepository.save(vraag50);
 
         // Now create user and result (linking them after question exists)
-        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
+        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), User.Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
-        Resultaat r1 = new Resultaat("Souleyman");
+        Resultaat r1 = new Resultaat("75%");
         r1.setUser(user1);
         r1.setVraag(vraag3);
 
