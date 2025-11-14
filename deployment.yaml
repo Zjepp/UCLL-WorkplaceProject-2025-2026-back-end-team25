@@ -20,14 +20,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        env:
-        # PostgreSQL connection
-        - name: DATABASE_URL
-          value: "jdbc:postgresql://postgresql:5432/IPSA_VZW"
-        - name: DATABASE_USERNAME
-          value: "postgres"
-        - name: DATABASE_PASSWORD
-          value: "postgres"
 ---
 apiVersion: v1
 kind: Service
