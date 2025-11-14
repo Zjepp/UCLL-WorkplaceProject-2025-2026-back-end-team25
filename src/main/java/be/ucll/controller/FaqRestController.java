@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,11 +31,13 @@ public class FaqRestController {
         this.faqService = faqService;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping
     public List<Faq> getAllFaqs() {
         return faqService.getAllFaqs();
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping
     public Faq addFaq(@Valid @RequestBody Faq faq) {
         return faqService.addFaq(faq);
