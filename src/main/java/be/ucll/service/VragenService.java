@@ -10,17 +10,14 @@ import be.ucll.repository.VragenRepository;
 
 @Service
 public class VragenService {
-    
 
     private AntwoordenRepository antwoordenRepository;
     private VragenRepository vragenRepository;
-    
 
     public VragenService(AntwoordenRepository antwoordenRepository, VragenRepository vragenRepository) {
         this.antwoordenRepository = antwoordenRepository;
         this.vragenRepository = vragenRepository;
     }
-
 
     public List<Vragen> getAll() {
         return vragenRepository.findAll();
@@ -28,6 +25,14 @@ public class VragenService {
 
     public List<Vragen> get20RandomQuestions() {
         return vragenRepository.find20RandomQuestions();
+    }
+
+    public Vragen saveVraag(Vragen vraag) {
+        return vragenRepository.save(vraag);
+    }
+
+    public void deleteVraag(Long id) {
+        vragenRepository.deleteById(id);
     }
 
 }

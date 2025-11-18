@@ -14,11 +14,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "resultaat")
 public class Resultaat {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,14 +30,11 @@ public class Resultaat {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "vraag_id")
-    @JsonManagedReference(value = "vraag-resultaat")
-    private Vragen vragen;
+    private Vragen vraag;
 
     public Resultaat(String resultaat) {
         this.resultaat = resultaat;
     }
-
 
     public Resultaat() {
     }
@@ -60,13 +56,12 @@ public class Resultaat {
         return "resultaaten [id=" + id + ", resultaat=" + resultaat + "]";
     }
 
-
     public void setUser(User user) {
         this.user = user;
     }
 
     public void setVraag(Vragen vragen) {
-        this.vragen = vragen;
+        this.vraag = vragen;
     }
-    
+
 }

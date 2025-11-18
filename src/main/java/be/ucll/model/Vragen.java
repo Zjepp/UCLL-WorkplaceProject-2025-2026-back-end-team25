@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -31,9 +32,9 @@ public class Vragen {
     @JsonManagedReference
     private List<Antwoorden> antwoorden = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "vraag-resultaat")
-    private List<Resultaat> resultaat;
+    @OneToMany(mappedBy = "vraag", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("vraag")
+    private List<Resultaat> resultaten = new ArrayList<>();
 
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
@@ -47,7 +48,18 @@ public class Vragen {
                 a.setVragen(this);
             }
         }
-        this.resultaat = resultaat;
+        this.resultaten = resultaat;
+    }
+
+    public Vragen(String type, String vraag, List<Antwoorden> antwoorden) {
+        this.type = type;
+        this.vraag = vraag;
+        this.antwoorden = antwoorden;
+        if (antwoorden != null) {
+            for (Antwoorden a : antwoorden) {
+                a.setVragen(this);
+            }
+        }
     }
 
     public Vragen() {
@@ -75,6 +87,13 @@ public class Vragen {
 
     public List<Antwoorden> getAntwoorden() {
         return antwoorden;
+    }
+
+    public void setAntwoorden(List<Antwoorden> antwoorden) {
+        this.antwoorden = antwoorden != null ? antwoorden : new ArrayList<>();
+        for (Antwoorden a : this.antwoorden) {
+            a.setVragen(this); // belangrijk voor cascade save
+        }
     }
 
     // public void setAntwoorden() {
