@@ -17,17 +17,32 @@ import jakarta.persistence.Table;
 @Table(name = "user_table")
 @Entity
 public class User {
+    public enum Role {
+        ADMIN,
+        USER
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="name")
     private String name;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="score")
     private int score;
+
+    @Column(name="password")
     private String password;
-    private String role;
+
+    @Column(name="role")
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "user-resultaat")
@@ -36,7 +51,7 @@ public class User {
 
     public User () {}
 
-    public User(String name, String email, String username, int score, String password, String role, List<Resultaat> resultaat) {
+    public User(String name, String email, String username, int score, String password, Role role, List<Resultaat> resultaat) {
         setName(name);
         setEmail(email);
         setUsername(username);
@@ -94,11 +109,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

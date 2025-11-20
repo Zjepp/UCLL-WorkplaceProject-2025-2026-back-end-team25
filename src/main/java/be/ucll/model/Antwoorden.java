@@ -3,6 +3,7 @@ package be.ucll.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Antwoorden {
     private Long id;
 
     private Boolean correct;
+    @Column(name="answer")
     private String antwoord;
 
     // @OneToMany(mappedBy = "antwoorden")
@@ -31,8 +33,8 @@ public class Antwoorden {
     private Vragen vragen;
 
     public Antwoorden(Boolean correct, String antwoord) {
-        this.correct = correct;
-        this.antwoord = antwoord;
+        setCorrect(correct);
+        setAntwoord(antwoord);
     }
 
     public Antwoorden() {
@@ -55,6 +57,9 @@ public class Antwoorden {
     }
 
     public void setAntwoord(String antwoord) {
+        if (antwoord == null || antwoord.trim().isEmpty()) {
+            throw new IllegalArgumentException("Leeg antwoord moet niet toegestaan zijn");
+        }
         this.antwoord = antwoord;
     }
 
