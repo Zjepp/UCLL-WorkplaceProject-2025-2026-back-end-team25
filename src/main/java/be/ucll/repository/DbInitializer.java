@@ -379,7 +379,7 @@ public class DbInitializer {
         // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
         // Antwoorden a118 = new Antwoorden(false, "Meer dan 2 dagen: dubbele dosis zetten");
         // Antwoorden a119 = new Antwoorden(false, "Altijd wachten tot volgende week");
-        // Antwoorden a120 = new Antwoorden(false, "Altijd contact opnemen met spoedarts");
+        // Antwoorden a120 = new Antwoorconst apiUrl = 'http://10.0.2.2:8080'den(false, "Altijd contact opnemen met spoedarts");
         // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
         //         List.of(a117, a118, a119, a120), null);
 
@@ -615,6 +615,9 @@ public class DbInitializer {
         User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), User.Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
+        User user2 = new User("Admin", "admin@hotmail.com", "admin", 0, passwordEncoder.encode("admin123"), User.Role.ADMIN, null);
+        userRepository.save(user2); // persist user to get an ID
+        
         Resultaat r1 = new Resultaat("75%");
         r1.setUser(user1);
         r1.setVraag(vraag3);
