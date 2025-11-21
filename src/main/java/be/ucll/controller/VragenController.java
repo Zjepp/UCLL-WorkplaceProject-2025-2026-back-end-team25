@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import be.ucll.model.Vragen;
 import be.ucll.service.AntwoordenService;
 import be.ucll.service.VragenService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/vragen")
@@ -31,12 +33,6 @@ public class VragenController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-    @GetMapping("/random20")
-    public List<Vragen> get20RandomQuestions() {
-        return vragenService.get20RandomQuestions();
-    }
-
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/random18")
     public List<Vragen> get18RandomQuestions() {
         return vragenService.get18RandomQuestions();
@@ -53,5 +49,4 @@ public class VragenController {
     public List<Vragen> getQuestionsByCategory(@org.springframework.web.bind.annotation.PathVariable String category) {
         return vragenService.getQuestionsByCategory(category);
     }
-    
 }

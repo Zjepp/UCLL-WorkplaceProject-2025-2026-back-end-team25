@@ -7,8 +7,8 @@ COPY pom.xml .
 COPY src ./src
 # Build the application using Maven
 RUN mvn clean package spring-boot:repackage -DskipTests
-# Use an official OpenJDK image as the base image
-FROM openjdk:21-jdk
+# Use Eclipse Temurin (recommended replacement for OpenJDK)
+FROM eclipse-temurin:21-jre
 # Set the working directory in the container
 WORKDIR /app
 
