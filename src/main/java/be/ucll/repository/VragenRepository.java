@@ -14,4 +14,16 @@ public interface VragenRepository extends JpaRepository<Vragen, Long> {
 
     @Query(value = "SELECT * FROM question ORDER BY RANDOM() LIMIT 20", nativeQuery = true)
     List<Vragen> find20RandomQuestions();
+
+    @Query(value = "SELECT * FROM question WHERE type != 'connect-choice' ORDER BY RANDOM() LIMIT 18", nativeQuery = true)
+    List<Vragen> find18RandomQuestions();
+
+    @Query(value = "SELECT * FROM question WHERE type = 'connect-choice' ORDER BY RANDOM() LIMIT 8", nativeQuery = true)
+    List<Vragen> find8RandomConnectQuestions();
+
+    @Query(value = "SELECT * FROM question WHERE category = :category AND type = 'connect-choice' ORDER BY RANDOM() LIMIT 8", nativeQuery = true)
+    List<Vragen> find8ConnectChoiceQuestionsByCategory(String category);
+
+    @Query(value = "SELECT * FROM question WHERE category = :category AND type != 'connect-choice' ORDER BY RANDOM() LIMIT 18", nativeQuery = true)
+    List<Vragen> find18OtherQuestionsByCategory(String category);
 }

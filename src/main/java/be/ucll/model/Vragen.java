@@ -26,6 +26,7 @@ public class Vragen {
 
     private String type;
     private String vraag;
+    private String category;
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -38,9 +39,10 @@ public class Vragen {
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
 
-    public Vragen(String type, String vraag, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
+    public Vragen(String type, String vraag, String category, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
         this.type = type;
         this.vraag = vraag;
+        this.category = category;
         this.antwoorden = antwoorden;
         if (antwoorden != null) {
             for (Antwoorden a : antwoorden) {
@@ -71,6 +73,14 @@ public class Vragen {
 
     public void setVraag(String vraag) {
         this.vraag = vraag;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<Antwoorden> getAntwoorden() {
