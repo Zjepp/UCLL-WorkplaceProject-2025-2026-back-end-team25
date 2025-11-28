@@ -664,16 +664,16 @@ public class DbInitializer {
         // vragenRepository.save(vraag48);
         // vragenRepository.save(vraag49);
         // vragenRepository.save(vraag50);
-        vragenRepository.save(vraag71);
-        vragenRepository.save(vraag72);
-        vragenRepository.save(vraag73);
-        vragenRepository.save(vraag74);
-        vragenRepository.save(vraag75);
-        vragenRepository.save(vraag76);
-        vragenRepository.save(vraag77);
-        vragenRepository.save(vraag78);
-        vragenRepository.save(vraag79);
-        vragenRepository.save(vraag80);
+        // vragenRepository.save(vraag71);
+        // vragenRepository.save(vraag72);
+        // vragenRepository.save(vraag73);
+        // vragenRepository.save(vraag74);
+        // vragenRepository.save(vraag75);
+        // vragenRepository.save(vraag76);
+        // vragenRepository.save(vraag77);
+        // vragenRepository.save(vraag78);
+        // vragenRepository.save(vraag79);
+        // vragenRepository.save(vraag80);
         
 
         // Now create user and result (linking them after question exists)
