@@ -2,9 +2,12 @@ package be.ucll.model;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +26,7 @@ public class Resultaat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="resultaat")
     private String resultaat;
 
     @ManyToOne
@@ -31,7 +35,7 @@ public class Resultaat {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "vraag_id")
+    @JoinColumn(name = "question_id")
     @JsonManagedReference(value = "vraag-resultaat")
     private Vragen vragen;
 

@@ -26,11 +26,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="name")
     private String name;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="score")
     private int score;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="role")
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

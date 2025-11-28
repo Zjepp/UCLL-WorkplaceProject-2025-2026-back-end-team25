@@ -211,7 +211,7 @@ public class DbInitializer {
                 List.of(a77, a78, a79, a80), null);
 
         // --- 21 ---
-        Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal tijdelijk");
+        Antwoorden a81 = new Antwoorden(true, "diarree");
         Vragen vraag21 = new Vragen("hangman",
                 "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?", "Hormonaal stelsel", List.of(a81),
                 null);
@@ -444,7 +444,7 @@ public class DbInitializer {
         // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
         // Antwoorden a118 = new Antwoorden(false, "Meer dan 2 dagen: dubbele dosis zetten");
         // Antwoorden a119 = new Antwoorden(false, "Altijd wachten tot volgende week");
-        // Antwoorden a120 = new Antwoorden(false, "Altijd contact opnemen met spoedarts");
+        // Antwoorden a120 = new Antwoorconst apiUrl = 'http://10.0.2.2:8080'den(false, "Altijd contact opnemen met spoedarts");
         // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
         //         List.of(a117, a118, a119, a120), null);
 
@@ -635,40 +635,54 @@ public class DbInitializer {
         vragenRepository.save(vraag19);
         vragenRepository.save(vraag20);
         vragenRepository.save(vraag21);
-        vragenRepository.save(vraag22);
+        // vragenRepository.save(vraag22);
         vragenRepository.save(vraag23);
         vragenRepository.save(vraag24);
-        vragenRepository.save(vraag25);
-        vragenRepository.save(vraag26);
-        vragenRepository.save(vraag27);
+        // vragenRepository.save(vraag25);
+        // vragenRepository.save(vraag26);
+        // vragenRepository.save(vraag27);
         vragenRepository.save(vraag28);
-        vragenRepository.save(vraag29);
-        vragenRepository.save(vraag30);
-        vragenRepository.save(vraag31);
-        vragenRepository.save(vraag32);
-        vragenRepository.save(vraag33);
-        vragenRepository.save(vraag34);
-        vragenRepository.save(vraag35);
-        vragenRepository.save(vraag36);
-        vragenRepository.save(vraag37);
-        vragenRepository.save(vraag38);
-        vragenRepository.save(vraag39);
-        vragenRepository.save(vraag40);
-        vragenRepository.save(vraag41);
-        vragenRepository.save(vraag42);
-        vragenRepository.save(vraag43);
-        vragenRepository.save(vraag44);
-        vragenRepository.save(vraag45);
-        vragenRepository.save(vraag46);
-        vragenRepository.save(vraag47);
-        vragenRepository.save(vraag48);
-        vragenRepository.save(vraag49);
-        vragenRepository.save(vraag50);
+        // vragenRepository.save(vraag29);
+        // vragenRepository.save(vraag30);
+        // vragenRepository.save(vraag31);
+        // vragenRepository.save(vraag32);
+        // vragenRepository.save(vraag33);
+        // vragenRepository.save(vraag34);
+        // vragenRepository.save(vraag35);
+        // vragenRepository.save(vraag36);
+        // vragenRepository.save(vraag37);
+        // vragenRepository.save(vraag38);
+        // vragenRepository.save(vraag39);
+        // vragenRepository.save(vraag40);
+        // vragenRepository.save(vraag41);
+        // vragenRepository.save(vraag42);
+        // vragenRepository.save(vraag43);
+        // vragenRepository.save(vraag44);
+        // vragenRepository.save(vraag45);
+        // vragenRepository.save(vraag46);
+        // vragenRepository.save(vraag47);
+        // vragenRepository.save(vraag48);
+        // vragenRepository.save(vraag49);
+        // vragenRepository.save(vraag50);
+        vragenRepository.save(vraag71);
+        vragenRepository.save(vraag72);
+        vragenRepository.save(vraag73);
+        vragenRepository.save(vraag74);
+        vragenRepository.save(vraag75);
+        vragenRepository.save(vraag76);
+        vragenRepository.save(vraag77);
+        vragenRepository.save(vraag78);
+        vragenRepository.save(vraag79);
+        vragenRepository.save(vraag80);
+        
 
         // Now create user and result (linking them after question exists)
         User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), User.Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
+        User user2 = new User("Admin", "admin@hotmail.com", "admin", 0, passwordEncoder.encode("admin123"), User.Role.ADMIN, null);
+        userRepository.save(user2); // persist user to get an ID
+        
         Resultaat r1 = new Resultaat("75%");
         r1.setUser(user1);
         r1.setVraag(vraag3);
