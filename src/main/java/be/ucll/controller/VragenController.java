@@ -37,10 +37,16 @@ public class VragenController {
     public List<Vragen> get18RandomQuestions() {
         return vragenService.get18RandomQuestions();
     }
-    
+
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/random8")
-    public List<Vragen> get8RandomQuestions() {
-        return vragenService.get8RandomQuestions();
+    public List<Vragen> get8RandomConnectQuestions() {
+        return vragenService.get8RandomConnectQuestions();
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/category/{category}")
+    public List<Vragen> getQuestionsByCategory(@org.springframework.web.bind.annotation.PathVariable String category) {
+        return vragenService.getQuestionsByCategory(category);
     }
 }

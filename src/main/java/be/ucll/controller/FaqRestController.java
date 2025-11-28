@@ -22,7 +22,6 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/faq")
-@CrossOrigin(origins = "*")
 public class FaqRestController {
 
     private FaqService faqService;

@@ -30,7 +30,16 @@ public class VragenService {
         return vragenRepository.find18RandomQuestions();
     }
 
-    public List<Vragen> get8RandomQuestions() {
-        return vragenRepository.find8RandomQuestions();
+    public List<Vragen> get8RandomConnectQuestions() {
+        return vragenRepository.find8RandomConnectQuestions();
     }
+
+    public List<Vragen> getQuestionsByCategory(String category) {
+        List<Vragen> connectChoiceQuestions = vragenRepository.find8ConnectChoiceQuestionsByCategory(category);
+        List<Vragen> otherQuestions = vragenRepository.find18OtherQuestionsByCategory(category);
+        
+        connectChoiceQuestions.addAll(otherQuestions);
+        return connectChoiceQuestions;
+    }
+
 }
