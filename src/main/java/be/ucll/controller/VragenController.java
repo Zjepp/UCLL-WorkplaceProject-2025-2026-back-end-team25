@@ -3,7 +3,12 @@ package be.ucll.controller;
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +16,6 @@ import be.ucll.model.Vragen;
 import be.ucll.service.AntwoordenService;
 import be.ucll.service.VragenService;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping("/vragen")
@@ -24,7 +28,6 @@ public class VragenController {
         this.vragenService = vragenService;
         this.antwoordenService = antwoordenService;
     }
-
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/all")
@@ -48,5 +51,29 @@ public class VragenController {
     @GetMapping("/category/{category}")
     public List<Vragen> getQuestionsByCategory(@org.springframework.web.bind.annotation.PathVariable String category) {
         return vragenService.getQuestionsByCategory(category);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PostMapping
+    public Vragen createVraag(@RequestBody Vragen vraag) {
+        return vragenService.saveVraag(vraag);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public void deleteVraag(@PathVariable Long id) {
+        vragenService.deleteVraag(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/{id}")
+    public Vragen getVraag(@PathVariable Long id) {
+        return vragenService.getVraagById(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PutMapping
+    public Vragen updateVraag(@RequestBody Vragen vraag) {
+        return vragenService.updateVraag(vraag);
     }
 }
