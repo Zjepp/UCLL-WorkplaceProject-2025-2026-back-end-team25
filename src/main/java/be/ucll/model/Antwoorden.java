@@ -31,8 +31,8 @@ public class Antwoorden {
     private Vragen vragen;
 
     public Antwoorden(Boolean correct, String antwoord) {
-        this.correct = correct;
-        this.antwoord = antwoord;
+        setCorrect(correct);
+        setAntwoord(antwoord);
     }
 
     public Antwoorden() {
@@ -55,6 +55,9 @@ public class Antwoorden {
     }
 
     public void setAntwoord(String antwoord) {
+        if (antwoord == null || antwoord.trim().isEmpty()) {
+            throw new IllegalArgumentException("Leeg antwoord moet niet toegestaan zijn");
+        }
         this.antwoord = antwoord;
     }
 

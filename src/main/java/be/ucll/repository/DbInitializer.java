@@ -6,12 +6,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import be.ucll.model.Antwoorden;
+import be.ucll.model.Faq;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -21,14 +24,20 @@ public class DbInitializer {
     private VragenRepository vragenRepository;
     private AntwoordenRepository antwoordenRepository;
     private ResultaatRepository resultaatRepository;
+    private FaqRepository faqRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
-            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository) {
+            AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository,
+            FaqRepository faqRepository) {
         this.userRepository = userRepository;
         this.vragenRepository = vragenRepository;
         this.antwoordenRepository = antwoordenRepository;
         this.resultaatRepository = resultaatRepository;
+        this.faqRepository = faqRepository;
     }
 
     @PostConstruct
@@ -201,162 +210,97 @@ public class DbInitializer {
         Vragen vraag20 = new Vragen("memory-choice", "Bij welke eGFR spreken we van nierinsufficiëntie?",
                 List.of(a77, a78, a79, a80), null);
 
-        // --- 21 ---
-        Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal tijdelijk");
-        Vragen vraag21 = new Vragen("hangman",
-                "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?", List.of(a81),
-                null);
+        // // --- 21 ---
+        // Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal tijdelijk");
+        // Vragen vraag21 = new Vragen("hangman",
+        //         "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?", List.of(a81),
+        //         null);
 
-        // --- 22 ---
-        Antwoorden a85 = new Antwoorden(true, "Tijdens of net na de maaltijd innemen");
-        Vragen vraag22 = new Vragen("hangman", "Wat is de aanbevolen manier om metformine in te nemen?",
-                List.of(a85), null);
+        // // --- 22 ---
+        // Antwoorden a85 = new Antwoorden(true, "Tijdens of net na de maaltijd innemen");
+        // Vragen vraag22 = new Vragen("hangman", "Wat is de aanbevolen manier om metformine in te nemen?",
+        //         List.of(a85), null);
 
-        // --- 23 ---
-        Antwoorden a89 = new Antwoorden(true, "Stimuleert insulinesecretie uit de β-cellen");
-        Vragen vraag23 = new Vragen("hangman", "Wat is het werkingsmechanisme van sulfonylurea?",
-                List.of(a89), null);
+        // // --- 23 ---
+        // Antwoorden a89 = new Antwoorden(true, "Stimuleert insulinesecretie uit de β-cellen");
+        // Vragen vraag23 = new Vragen("hangman", "Wat is het werkingsmechanisme van sulfonylurea?",
+        //         List.of(a89), null);
 
-        // --- 24 ---
-        Antwoorden a93 = new Antwoorden(true, "Hypoglycemie en gewichtstoename");
-        Vragen vraag24 = new Vragen("hangman", "Wat zijn typische nevenwerkingen van sulfonylurea?",
-                List.of(a93), null);
+        // // --- 24 ---
+        // Antwoorden a93 = new Antwoorden(true, "Hypoglycemie en gewichtstoename");
+        // Vragen vraag24 = new Vragen("hangman", "Wat zijn typische nevenwerkingen van sulfonylurea?",
+        //         List.of(a93), null);
 
-        // --- 25 ---
-        Antwoorden a97 = new Antwoorden(true, "Niet gebruiken bij GFR < 30 ml/min");
-        Vragen vraag25 = new Vragen("hangman", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
-                List.of(a97), null);
+        // // --- 25 ---
+        // Antwoorden a97 = new Antwoorden(true, "Niet gebruiken bij GFR < 30 ml/min");
+        // Vragen vraag25 = new Vragen("hangman", "Wat is een belangrijke contra-indicatie voor sulfonylurea?",
+        //         List.of(a97), null);
 
-        // --- 26 ---
-        Antwoorden a101 = new Antwoorden(true, "Verlaagt HbA1c gemiddeld met 0,6% tot 2%");
-        Vragen vraag26 = new Vragen("hangman", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
-                List.of(a101), null);
+        // // --- 26 ---
+        // Antwoorden a101 = new Antwoorden(true, "Verlaagt HbA1c gemiddeld met 0,6% tot 2%");
+        // Vragen vraag26 = new Vragen("hangman", "Wat is het effect van DPP-4 inhibitoren op HbA1c?",
+        //         List.of(a101), null);
 
-        // --- 27 ---
-        Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en gewichtsneutraal");
-        Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
-                List.of(a105), null);
+        // // --- 27 ---
+        // Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en gewichtsneutraal");
+        // Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
+        //         List.of(a105), null);
 
-        // --- 28 ---
-        Antwoorden a109 = new Antwoorden(true, "Vermindert gewicht en bloeddruk");
-        Vragen vraag28 = new Vragen("hangman", "Wat is een bijkomend gunstig effect van GLP-1 receptoragonisten?",
-                List.of(a109), null);
+        // // --- 28 ---
+        // Antwoorden a109 = new Antwoorden(true, "Vermindert gewicht en bloeddruk");
+        // Vragen vraag28 = new Vragen("hangman", "Wat is een bijkomend gunstig effect van GLP-1 receptoragonisten?",
+        //         List.of(a109), null);
 
-        // --- 29 ---
-        Antwoorden a113 = new Antwoorden(true, "GLP-1 RA heeft cardiovasculaire voordelen");
-        Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
-                List.of(a113), null);
+        // // --- 29 ---
+        // Antwoorden a113 = new Antwoorden(true, "GLP-1 RA heeft cardiovasculaire voordelen");
+        // Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
+        //         List.of(a113), null);
 
-        // --- 30 ---
-        Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
-        Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
-                List.of(a117), null);
+        // // --- 30 ---
+        // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
+        // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
+        //         List.of(a117), null);
 
-        // --- 31 ---
-        Antwoorden a121 = new Antwoorden(true, "Minstens 30 minuten voor het ontbijt");
-        Vragen vraag31 = new Vragen("connect-choice", "Wanneer moet Rybelsus® (orale semaglutide) worden ingenomen?",
-                List.of(a121), null);
+        // --- 71 ---
+        Antwoorden a281 = new Antwoorden(true, "Paracetamol");
+        Vragen vraag71 = new Vragen("connect-choice", "C₈H₉NO₂", List.of(a281), null);
 
-        // --- 32 ---
-        Antwoorden a125 = new Antwoorden(true, "Met maximaal 120 ml water doorslikken");
-        Vragen vraag32 = new Vragen("connect-choice", "Hoe moet Rybelsus® worden ingenomen volgens voorschrift?",
-                List.of(a125), null);
+        // --- 72 ---
+        Antwoorden a285 = new Antwoorden(true, "Ibuprofen");
+        Vragen vraag72 = new Vragen("connect-choice", "C₁₃H₁₈O₂", List.of(a285), null);
 
-        // --- 33 ---
-        Antwoorden a129 = new Antwoorden(true, "Wachten tot 30 minuten na inname om te eten of drinken");
-        Vragen vraag33 = new Vragen("connect-choice", "Wat is belangrijk na inname van orale semaglutide (Rybelsus®)?",
-                List.of(a129), null);
+        // --- 73 ---
+        Antwoorden a289 = new Antwoorden(true, "Omeprazole");
+        Vragen vraag73 = new Vragen("connect-choice", "C₂₁H₂₅ClN₂O₃", List.of(a289), null);
 
-        // --- 34 ---
-        Antwoorden a133 = new Antwoorden(true, "Misselijkheid en braken");
-        Vragen vraag34 = new Vragen("connect-choice",
-                "Wat is de meest voorkomende nevenwerking van GLP-1 receptoragonisten?",
-                List.of(a133), null);
+        // --- 74 ---
+        Antwoorden a293 = new Antwoorden(true, "Cetirizine");
+        Vragen vraag74 = new Vragen("connect-choice", "C₂₁H₂₅ClN₂O₃", List.of(a293), null);
 
-        // --- 35 ---
-        Antwoorden a137 = new Antwoorden(true, "Kleine porties en vetarme maaltijden");
-        Vragen vraag35 = new Vragen("connect-choice",
-                "Welke voedingsadviezen helpen bij GLP-1-gerelateerde misselijkheid?", List.of(a137),
-                null);
+        // --- 75 ---
+        Antwoorden a297 = new Antwoorden(true, "Metformine");
+        Vragen vraag75 = new Vragen("connect-choice", "C₄H₁₁N₅", List.of(a297), null);
 
-        // --- 36 ---
-        Antwoorden a141 = new Antwoorden(true, "≥150 minuten matige activiteit per week");
-        Vragen vraag36 = new Vragen("connect-choice",
-                "Wat is de aanbevolen hoeveelheid fysieke activiteit per week bij diabetes?",
-                List.of(a141), null);
+        // --- 76 ---
+        Antwoorden a301 = new Antwoorden(true, "Dapagliflozine");
+        Vragen vraag76 = new Vragen("connect-choice", "C₂₁H₂₆ClO₈", List.of(a301), null);
 
-        // --- 37 ---
-        Antwoorden a145 = new Antwoorden(true, "5-10% gewichtsverlies verlaagt cardiovasculair risico");
-        Vragen vraag37 = new Vragen("connect-choice",
-                "Wat is het effect van gewichtsverlies op cardiovasculaire risico’s bij diabetes?",
-                List.of(a145), null);
+        // --- 77 ---
+        Antwoorden a305 = new Antwoorden(true, "Semaglutide");
+        Vragen vraag77 = new Vragen("connect-choice", "C₁₈₇H₂₉₁N₄₅O₅₉", List.of(a305), null);
 
-        // --- 38 ---
-        Antwoorden a149 = new Antwoorden(true,
-                "Hart- en vaatziekten zijn oorzaak van 60–80% van de sterfte bij diabetes");
-        Vragen vraag38 = new Vragen("connect-choice", "Wat is de belangrijkste doodsoorzaak bij diabetespatiënten?",
-                List.of(a149), null);
+        // --- 78 ---
+        Antwoorden a309 = new Antwoorden(true, "Tirzepatide");
+        Vragen vraag78 = new Vragen("connect-choice", "C₂₉₁H₄₅₀N₇₀O₈₇", List.of(a309), null);
 
-        // --- 39 ---
-        Antwoorden a153 = new Antwoorden(true, "SGLT2-remmers verminderen ziekenhuisopnames voor hartfalen");
-        Vragen vraag39 = new Vragen("connect-choice", "Wat is het effect van SGLT2-inhibitoren op hartfalen?",
-                List.of(a153), null);
+        // --- 79 ---
+        Antwoorden a313 = new Antwoorden(true, "Orforglipron");
+        Vragen vraag79 = new Vragen("connect-choice", "C₂₆H₂₃F₃N₆O₃", List.of(a313), null);
 
-        // --- 40 ---
-        Antwoorden a157 = new Antwoorden(true, "Chronische nierschade");
-        Vragen vraag40 = new Vragen("connect-choice", "Welke complicatie treedt vaak op bij diabetes en beïnvloedt eGFR?",
-                List.of(a157), null);
+        // --- 80 ---
+        Antwoorden a317 = new Antwoorden(true, "Retatrutide");
+        Vragen vraag80 = new Vragen("connect-choice", "C₂₉₀H₄₄₀N₇₆O₈₈", List.of(a317), null);
 
-        // --- 41 ---
-        Antwoorden a161 = new Antwoorden(true, "Reversie mogelijk bij vroegtijdige gewichtsreductie");
-        Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
-                List.of(a161), null);
-
-        // --- 42 ---
-        Antwoorden a165 = new Antwoorden(true, "Tirzepatide is een GLP-1/GIP receptoragonist");
-        Vragen vraag42 = new Vragen("connect-choice", "Wat is tirzepatide (Mounjaro)?", List.of(a165),
-                null);
-
-        // --- 43 ---
-        Antwoorden a169 = new Antwoorden(true, "Grotere HbA1c-daling dan semaglutide");
-        Vragen vraag43 = new Vragen("connect-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
-                List.of(a169), null);
-
-        // --- 44 ---
-        Antwoorden a173 = new Antwoorden(true, "≥15% gewichtsverlies geeft betere metabole controle");
-        Vragen vraag44 = new Vragen("connect-choice", "Wat is het verband tussen gewichtsverlies en HbA1c?",
-                List.of(a173), null);
-
-        // --- 45 ---
-        Antwoorden a177 = new Antwoorden(true, "Orforglipron is een niet-peptide orale GLP-1 RA");
-        Vragen vraag45 = new Vragen("connect-choice", "Wat is orforglipron?", List.of(a177), null);
-
-        // --- 46 ---
-        Antwoorden a181 = new Antwoorden(true, "GLP-1, GIP en glucagon receptoragonist");
-        Vragen vraag46 = new Vragen("connect-choice", "Wat is het werkingsmechanisme van retatrutide?",
-                List.of(a181), null);
-
-        // --- 47 ---
-        Antwoorden a185 = new Antwoorden(true, "HbA1c > 7.5% en BMI ≥ 30 kg/m²");
-        Vragen vraag47 = new Vragen("connect-choice", "Wat zijn de Belgische terugbetalingsvoorwaarden voor GLP-1 RA?",
-                List.of(a185), null);
-
-        // --- 48 ---
-        Antwoorden a189 = new Antwoorden(true, "HbA1c tussen 7% en 9%");
-        Vragen vraag48 = new Vragen("connect-choice",
-                "Wat is de HbA1c-voorwaarde voor SGLT2-inhibitor terugbetaling in België?",
-                List.of(a189), null);
-
-        // --- 49 ---
-        Antwoorden a193 = new Antwoorden(true, "Een eGFR > 60 ml/min");
-        Vragen vraag49 = new Vragen("connect-choice",
-                "Wat is de eGFR-voorwaarde voor gebruik van SGLT2-inhibitoren in België?",
-                List.of(a193), null);
-
-        // --- 50 ---
-        Antwoorden a197 = new Antwoorden(true, "Maximaal 4 educatiesessies per jaar van 30 minuten");
-        Vragen vraag50 = new Vragen("connect-choice", "Wat voorziet het Belgische starttraject diabetes inzake educatie?",
-                List.of(a197), null);
 
         // // --- 21 ---
         // Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal tijdelijk");
@@ -529,7 +473,7 @@ public class DbInitializer {
         // Antwoorden a162 = new Antwoorden(false, "Altijd onomkeerbaar");
         // Antwoorden a163 = new Antwoorden(false, "Enkel omkeerbaar met bariatrische chirurgie");
         // Antwoorden a164 = new Antwoorden(false, "Nooit klinisch relevant");
-        // Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
+        // Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor diabetes type 2 bij gewichtsverlies?",
         //         List.of(a161, a162, a163, a164), null);
 
         // // --- 42 ---
@@ -544,7 +488,7 @@ public class DbInitializer {
         // Antwoorden a169 = new Antwoorden(true, "Grotere HbA1c-daling dan semaglutide");
         // Antwoorden a170 = new Antwoorden(false, "Kleinere HbA1c-daling dan metformine");
         // Antwoorden a171 = new Antwoorden(false, "Geen effect op gewicht");
-        // Antwoorden a172 = new Antwoorden(false, "Enkel effect bij type 1 diabetes");
+        // Antwoorden a172 = new Antwoorden(false, "Enkel effect bij diabetes type 1");
         // Vragen vraag43 = new Vragen("connect-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
         //         List.of(a169, a170, a171, a172), null);
 
@@ -625,46 +569,66 @@ public class DbInitializer {
         vragenRepository.save(vraag18);
         vragenRepository.save(vraag19);
         vragenRepository.save(vraag20);
-        vragenRepository.save(vraag21);
-        vragenRepository.save(vraag22);
-        vragenRepository.save(vraag23);
-        vragenRepository.save(vraag24);
-        vragenRepository.save(vraag25);
-        vragenRepository.save(vraag26);
-        vragenRepository.save(vraag27);
-        vragenRepository.save(vraag28);
-        vragenRepository.save(vraag29);
-        vragenRepository.save(vraag30);
-        vragenRepository.save(vraag31);
-        vragenRepository.save(vraag32);
-        vragenRepository.save(vraag33);
-        vragenRepository.save(vraag34);
-        vragenRepository.save(vraag35);
-        vragenRepository.save(vraag36);
-        vragenRepository.save(vraag37);
-        vragenRepository.save(vraag38);
-        vragenRepository.save(vraag39);
-        vragenRepository.save(vraag40);
-        vragenRepository.save(vraag41);
-        vragenRepository.save(vraag42);
-        vragenRepository.save(vraag43);
-        vragenRepository.save(vraag44);
-        vragenRepository.save(vraag45);
-        vragenRepository.save(vraag46);
-        vragenRepository.save(vraag47);
-        vragenRepository.save(vraag48);
-        vragenRepository.save(vraag49);
-        vragenRepository.save(vraag50);
+        // vragenRepository.save(vraag21);
+        // vragenRepository.save(vraag22);
+        // vragenRepository.save(vraag23);
+        // vragenRepository.save(vraag24);
+        // vragenRepository.save(vraag25);
+        // vragenRepository.save(vraag26);
+        // vragenRepository.save(vraag27);
+        // vragenRepository.save(vraag28);
+        // vragenRepository.save(vraag29);
+        // vragenRepository.save(vraag30);
+        // vragenRepository.save(vraag31);
+        // vragenRepository.save(vraag32);
+        // vragenRepository.save(vraag33);
+        // vragenRepository.save(vraag34);
+        // vragenRepository.save(vraag35);
+        // vragenRepository.save(vraag36);
+        // vragenRepository.save(vraag37);
+        // vragenRepository.save(vraag38);
+        // vragenRepository.save(vraag39);
+        // vragenRepository.save(vraag40);
+        // vragenRepository.save(vraag41);
+        // vragenRepository.save(vraag42);
+        // vragenRepository.save(vraag43);
+        // vragenRepository.save(vraag44);
+        // vragenRepository.save(vraag45);
+        // vragenRepository.save(vraag46);
+        // vragenRepository.save(vraag47);
+        // vragenRepository.save(vraag48);
+        // vragenRepository.save(vraag49);
+        // vragenRepository.save(vraag50);
+        vragenRepository.save(vraag71);
+        vragenRepository.save(vraag72);
+        vragenRepository.save(vraag73);
+        vragenRepository.save(vraag74);
+        vragenRepository.save(vraag75);
+        vragenRepository.save(vraag76);
+        vragenRepository.save(vraag77);
+        vragenRepository.save(vraag78);
+        vragenRepository.save(vraag79);
+        vragenRepository.save(vraag80);
+        
 
         // Now create user and result (linking them after question exists)
-        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, "henk123", "user", null);
+        User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"), User.Role.USER, null);
         userRepository.save(user1); // persist user to get an ID
 
-        Resultaat r1 = new Resultaat("Souleyman");
+        Resultaat r1 = new Resultaat("75%");
         r1.setUser(user1);
         r1.setVraag(vraag3);
 
         // Save resultaat (this will link user + vraag)
         resultaatRepository.save(r1);
+
+        // Initialize FAQ data
+        Faq faq1 = new Faq("Is deze app betalend?", "ja deze app is betalend");
+        Faq faq2 = new Faq("Hoe kan ik mijn wachtwoord resetten?", "Klik op \"wachtwoord vergeten\" op de loginpagina");
+        Faq faq3 = new Faq("Kan ik de app offline gebruiken?", "Nee, je hebt een internetverbinding nodig om de quiz te spelen");
+        
+        faqRepository.save(faq1);
+        faqRepository.save(faq2);
+        faqRepository.save(faq3);
     };
 }
