@@ -1,6 +1,7 @@
 package be.ucll.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,15 @@ public class UserService {
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {return user.get();}
+        else {
+            throw new RuntimeException("User not found.");
+        }
     }
 
     public User addUser(User userData) {
-        User existingUser = userRepository.findByEmail(userData.getEmail());
+        Optional<User> existingUser = userRepository.findByEmail(userData.getEmail());
         if (existingUser != null) {
             throw new RuntimeException("User already exists.");
         }
