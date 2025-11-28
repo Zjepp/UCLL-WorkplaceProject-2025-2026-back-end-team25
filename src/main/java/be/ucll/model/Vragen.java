@@ -26,7 +26,7 @@ public class Vragen {
     private Long id;
 
     private String type;
-    @Column(name="question")
+    @Column(name = "question")
     private String vraag;
     private String category;
 
@@ -35,8 +35,8 @@ public class Vragen {
     private List<Antwoorden> antwoorden = new ArrayList<>();
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "vraag-resultaat")
-    private List<Resultaat> resultaat;
+    @JsonManagedReference(value = "vraag-resultaat")
+    private List<Resultaat> resultaat = new ArrayList<>();
 
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
