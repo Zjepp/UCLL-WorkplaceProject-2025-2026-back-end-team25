@@ -755,11 +755,11 @@ public class DbInitializer {
         
 
                 // Now create user and result (linking them after question exists)
-                User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk123"),
+                User user1 = new User("henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk"),
                                 User.Role.USER, null);
                 userRepository.save(user1); // persist user to get an ID
 
-                User user2 = new User("Admin", "admin@hotmail.com", "admin", 0, passwordEncoder.encode("admin123"),
+                User user2 = new User("admin", "admin@hotmail.com", "admin", 0, passwordEncoder.encode("admin"),
                                 User.Role.ADMIN, null);
                 userRepository.save(user2); // persist user to get an ID
 

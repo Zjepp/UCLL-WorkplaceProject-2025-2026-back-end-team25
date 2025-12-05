@@ -26,32 +26,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
 
-    @Column(name="score")
+    @Column(name = "score")
     private int score;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="role")
+    @Column(name = "role")
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "user-resultaat")
     private List<Resultaat> resultaat = new ArrayList<>();
 
+    public User() {
+    }
 
-    public User () {}
-
-    public User(String name, String email, String username, int score, String password, Role role, List<Resultaat> resultaat) {
+    public User(String name, String email, String username, int score, String password, Role role,
+            List<Resultaat> resultaat) {
         setName(name);
         setEmail(email);
         setUsername(username);
@@ -65,7 +66,7 @@ public class User {
         return id;
     }
 
-    public void setId (Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -101,7 +102,7 @@ public class User {
         this.score = score;
     }
 
-    public String getPassword () {
+    public String getPassword() {
         return password;
     }
 
@@ -117,7 +118,7 @@ public class User {
         this.role = role;
     }
 
-    public List<Resultaat> getResultaat(){
+    public List<Resultaat> getResultaat() {
         return resultaat;
     }
 }
