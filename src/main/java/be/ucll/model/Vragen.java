@@ -29,6 +29,7 @@ public class Vragen {
     @Column(name = "question")
     private String vraag;
     private String category;
+    private int tijd;
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -41,10 +42,12 @@ public class Vragen {
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
 
-    public Vragen(String type, String vraag, String category, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
+    public Vragen(String type, String vraag, String category, List<Antwoorden> antwoorden,
+            List<Resultaat> resultaat, int tijd) {
         this.type = type;
         this.vraag = vraag;
         this.category = category;
+        this.tijd = tijd;
         this.antwoorden = antwoorden;
         if (antwoorden != null) {
             for (Antwoorden a : antwoorden) {
@@ -59,6 +62,14 @@ public class Vragen {
 
     public Long getId() {
         return id;
+    }
+
+    public int getTijd() {
+        return tijd;
+    }
+
+    public void setTijd(int tijd) {
+        this.tijd = tijd;
     }
 
     public String getType() {
