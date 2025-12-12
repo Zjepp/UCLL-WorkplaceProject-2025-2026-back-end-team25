@@ -1,10 +1,14 @@
 package be.ucll.service;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import be.ucll.model.Antwoorden;
+import be.ucll.model.User;
 import be.ucll.model.Vragen;
 import be.ucll.repository.AntwoordenRepository;
 import be.ucll.repository.VragenRepository;
@@ -73,6 +77,46 @@ public class VragenService {
         }
 
         return vragenRepository.save(bestaande);
+    }
+
+    public int addVragenFromCsv(MultipartFile file) {
+        int count = 0;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+            String line;
+            boolean firstLine = true;
+            while ((line = reader.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue;
+                } // skip header
+
+                String[] parts = line.split(",");
+                if (parts.length < 4)
+                    continue;
+
+                String type = parts[0].trim();
+                String vraag = parts[1].trim();
+                String category = parts[2].trim();
+                String a1 = parts[3].trim();
+                String a2 = parts[4].trim();
+                String a3 = parts[5].trim();
+                String a4 = parts[6].trim();
+                int tijd = Integer.parseInt(parts[7].trim());
+
+                Antwoorden antw1 = new Antwoorden(true, a1);
+                Antwoorden antw2 = new Antwoorden(false, a2);
+                Antwoorden antw3 = new Antwoorden(false, a3);
+                Antwoorden antw4 = new Antwoorden(false, a4);
+
+                Vragen newVraag = new Vragen(type, vraag, category, List.of(antw1, antw2, antw3, antw4), null, tijd);
+
+                vragenRepository.save(newVraag);
+                count++;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Fout bij inlezen CSV: " + e.getMessage());
+        }
+        return count;
     }
 
 }
