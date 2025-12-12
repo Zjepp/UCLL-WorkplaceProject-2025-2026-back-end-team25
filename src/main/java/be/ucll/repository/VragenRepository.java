@@ -26,4 +26,6 @@ public interface VragenRepository extends JpaRepository<Vragen, Long> {
 
     @Query(value = "SELECT * FROM question WHERE category = :category AND type != 'connect-choice' ORDER BY RANDOM() LIMIT 18", nativeQuery = true)
     List<Vragen> find18OtherQuestionsByCategory(String category);
+    @Query("SELECT DISTINCT category FROM question")
+    List<String> findAllCategories();
 }
