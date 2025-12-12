@@ -20,19 +20,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        env:
-        - name: DATASOURCE_URL
-          value: "jdbc:postgresql://postgresql:5432/IPSA_VZW"
-        - name: DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: postgresql
-              key: database-user
-        - name: DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgresql
-              key: database-password
         resources:
           requests:
             memory: "256Mi"
