@@ -80,9 +80,10 @@ public class VragenController {
         return vragenService.updateVraag(vraag);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @PostMapping("/upload-csv")
     public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
+        System.out.println(file);
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("Bestand is leeg");
         }
