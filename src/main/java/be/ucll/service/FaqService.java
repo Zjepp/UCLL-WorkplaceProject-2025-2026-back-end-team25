@@ -24,7 +24,7 @@ public class FaqService {
         return faqRepository.findAll();
     }
 
-    public Faq saveFaq(Faq faq) {
+    public Faq addFaq(Faq faq) {
         return faqRepository.save(faq);
     }
 
