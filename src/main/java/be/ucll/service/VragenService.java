@@ -49,6 +49,8 @@ public class VragenService {
     }
 
     public void deleteVraag(Long id) {
+        Vragen vraag = vragenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vraag niet gevonden met id: " + id));
         vragenRepository.deleteById(id);
     }
 
