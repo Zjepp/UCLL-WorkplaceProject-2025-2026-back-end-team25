@@ -60,6 +60,10 @@ public class Vragen {
     public Vragen() {
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

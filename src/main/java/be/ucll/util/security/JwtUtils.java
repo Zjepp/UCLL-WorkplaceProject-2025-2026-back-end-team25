@@ -32,8 +32,8 @@ public class JwtUtils {
     UserRepository userRepository;
 
     // private static final String secret = System.getenv("JWT_SECRET");
-    private static final String secret = "oqisdhjfqdksfjmqdsjfdsfqds6f4qs6d4fq6sd54fq5ds4f3q4sd65fqsd6f4qs6d1f6f5h165gj1j6165m1gfsh651qf5g165i165k165ggqf1dq65g165s1h651qf6g165sg65fg46sdfgs165dfg16dfs";
-
+    private static final String secret = System.getenv("JWT_SECRET");
+    
     private final int jwtExpiration = 86400000; // TODO: DISCUSS EXPIRATION DATE
     private final Key key;
 

@@ -1,3 +1,4 @@
+
 package be.ucll.service;
 
 import java.io.BufferedReader;
@@ -51,6 +52,8 @@ public class VragenService {
     }
 
     public void deleteVraag(Long id) {
+        Vragen vraag = vragenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vraag niet gevonden met id: " + id));
         vragenRepository.deleteById(id);
     }
 
@@ -142,6 +145,10 @@ public class VragenService {
         }
 
         return count;
+    }
+
+    public List<String> getAllCategories() {
+        return vragenRepository.findAllCategories();
     }
 
 }

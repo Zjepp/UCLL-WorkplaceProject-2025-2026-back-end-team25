@@ -75,6 +75,14 @@ public class Resultaat {
         return resultaat;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public Vragen getVraag() {
+        return this.vragen;
+    }
+
     @Override
     public String toString() {
         return "resultaaten [id=" + id + ", resultaat=" + resultaat + "]";

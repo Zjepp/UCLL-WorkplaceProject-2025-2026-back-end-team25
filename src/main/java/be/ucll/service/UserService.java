@@ -41,13 +41,18 @@ public class UserService {
         }
     }
 
-    public User addUser(User userData) {
-        Optional<User> existingUser = userRepository.findByEmail(userData.getEmail());
-        if (existingUser != null) {
+    public User addUser(User user) {
+        if (user == null) throw new NullPointerException();
+        Optional<User> existing = userRepository.findByEmail(user.getEmail());
+        // Treat null as user not found (safe for legacy/misbehaving repos)
+        if (existing != null && existing.isPresent()) {
             throw new RuntimeException("User already exists.");
         }
-        userRepository.save(userData);
-        return userData;
+        User saved = userRepository.save(user);
+        if (saved == null) {
+            throw new RuntimeException("Failed to save user.");
+        }
+        return saved;
     }
 
     // ... andere imports

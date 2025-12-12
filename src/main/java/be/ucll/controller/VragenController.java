@@ -1,3 +1,4 @@
+
 package be.ucll.controller;
 
 import java.util.List;
@@ -88,6 +89,12 @@ public class VragenController {
         }
         int added = vragenService.addVragenFromCsv(file);
         return ResponseEntity.ok(added + " vragen succesvol toegevoegd");
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return vragenService.getAllCategories();
     }
 
 }
