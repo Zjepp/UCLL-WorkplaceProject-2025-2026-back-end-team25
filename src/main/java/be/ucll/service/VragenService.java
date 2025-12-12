@@ -1,3 +1,4 @@
+
 package be.ucll.service;
 
 import java.io.BufferedReader;
@@ -119,6 +120,10 @@ public class VragenService {
             throw new RuntimeException("Fout bij inlezen CSV: " + e.getMessage());
         }
         return count;
+    }
+
+    public List<String> getAllCategories() {
+        return vragenRepository.findAllCategories();
     }
 
 }
