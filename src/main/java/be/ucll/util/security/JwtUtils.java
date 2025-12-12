@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy; // <--- VOEG DEZE IMPORT TOE
 
 import java.security.Key;
 import java.util.Date;
@@ -24,6 +25,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class JwtUtils {
 
     @Autowired
+    @Lazy
     UserService userService;
 
     @Autowired
@@ -31,7 +33,7 @@ public class JwtUtils {
 
     // private static final String secret = System.getenv("JWT_SECRET");
     private static final String secret = "oqisdhjfqdksfjmqdsjfdsfqds6f4qs6d4fq6sd54fq5ds4f3q4sd65fqsd6f4qs6d1f6f5h165gj1j6165m1gfsh651qf5g165i165k165ggqf1dq65g165s1h651qf6g165sg65fg46sdfgs165dfg16dfs";
-    
+
     private final int jwtExpiration = 86400000; // TODO: DISCUSS EXPIRATION DATE
     private final Key key;
 
@@ -44,7 +46,7 @@ public class JwtUtils {
 
     public String generateJwtToken(String email) throws ServiceException {
         User user = userRepository.findByEmail(email)
-        .orElseThrow(() -> new ServiceException("User with email does not exist", "email"));
+                .orElseThrow(() -> new ServiceException("User with email does not exist", "email"));
 
         Claims claims = Jwts.claims();
         claims.setSubject(user.getEmail());
