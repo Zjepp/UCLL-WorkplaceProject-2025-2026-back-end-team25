@@ -1,7 +1,9 @@
+
 package be.ucll.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import be.ucll.model.Vragen;
 import be.ucll.service.AntwoordenService;
@@ -76,4 +79,21 @@ public class VragenController {
     public Vragen updateVraag(@RequestBody Vragen vraag) {
         return vragenService.updateVraag(vraag);
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/upload-csv")
+    public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Bestand is leeg");
+        }
+        int added = vragenService.addVragenFromCsv(file);
+        return ResponseEntity.ok(added + " vragen succesvol toegevoegd");
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return vragenService.getAllCategories();
+    }
+
 }
