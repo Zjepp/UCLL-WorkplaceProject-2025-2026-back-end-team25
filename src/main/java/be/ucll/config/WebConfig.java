@@ -10,12 +10,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(
-                    "http://localhost:8081",              // Local Expo dev server
-                    "http://localhost:19006",             // Alternative Expo web port
-                    "http://10.0.2.2:8081",               // Android emulator
-                    "https://*.apps.okd.ucll.cloud",      // OKD frontend (wildcard)
-                    "https://front-end-team25-wpp-team-25.apps.okd.ucll.cloud"  // Specific OKD frontend URL
+                .allowedOriginPatterns(
+                    "http://localhost:*",                 // Local development (any port)
+                    "https://*.apps.okd.ucll.cloud",      // OKD frontend HTTPS (wildcard)
+                    "http://*.apps.okd.ucll.cloud"        // OKD frontend HTTP (wildcard)
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
                 .allowedHeaders("*")
