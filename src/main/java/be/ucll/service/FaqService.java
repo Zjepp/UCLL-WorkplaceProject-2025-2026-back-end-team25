@@ -24,7 +24,7 @@ public class FaqService {
         return faqRepository.findAll();
     }
 
-    public Faq saveFaq(Faq faq) {
+    public Faq addFaq(Faq faq) {
         return faqRepository.save(faq);
     }
 
@@ -45,5 +45,10 @@ public class FaqService {
         bestaande.setAnswer(updatedFaq.getAnswer());
 
         return faqRepository.save(bestaande);
+    }
+
+    public Faq saveFaq(Faq faq) {
+        faqRepository.save(faq);
+        return faq;
     }
 }

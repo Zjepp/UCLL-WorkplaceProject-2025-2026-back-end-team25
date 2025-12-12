@@ -53,7 +53,7 @@ public class DbInitializer {
                 Antwoorden a4 = new Antwoorden(false, "Een hormonale aandoening van de schildklier");
                 Vragen vraag1 = new Vragen("standaard-choice", "Wat is de definitie van diabetes mellitus?",
                                 "Hormonaal stelsel", List.of(a1, a2, a3, a4),
-                                null);
+                                null, 0);
 
                 // --- 2 ---
                 Antwoorden a5 = new Antwoorden(true, "Absoluut insulinetekort (type 1) of relatief tekort (type 2)");
@@ -62,7 +62,7 @@ public class DbInitializer {
                 Antwoorden a8 = new Antwoorden(false, "Een tekort aan vitamine D");
                 Vragen vraag2 = new Vragen("standaard-choice", "Wat veroorzaakt diabetes mellitus primair?",
                                 "Hormonaal stelsel", List.of(a5, a6, a7, a8),
-                                null);
+                                null, 0);
 
                 // --- 3 ---
                 Antwoorden a9 = new Antwoorden(true, "Type 2 diabetes");
@@ -71,7 +71,7 @@ public class DbInitializer {
                 Antwoorden a12 = new Antwoorden(false, "Secundaire diabetes");
                 Vragen vraag3 = new Vragen("standaard-choice", "Welk type diabetes komt wereldwijd het meest voor?",
                                 "Hormonaal stelsel",
-                                List.of(a9, a10, a11, a12), null);
+                                List.of(a9, a10, a11, a12), null, 0);
 
                 // --- 4 ---
                 Antwoorden a13 = new Antwoorden(true, "537 miljoen");
@@ -81,7 +81,7 @@ public class DbInitializer {
                 Vragen vraag4 = new Vragen("standaard-choice",
                                 "Hoeveel volwassenen wereldwijd leefden in 2021 met diabetes volgens de IDF?",
                                 "Hormonaal stelsel",
-                                List.of(a13, a14, a15, a16), null);
+                                List.of(a13, a14, a15, a16), null, 0);
 
                 // --- 5 ---
                 Antwoorden a17 = new Antwoorden(true, "1 op 10 volwassenen");
@@ -91,7 +91,7 @@ public class DbInitializer {
                 Vragen vraag5 = new Vragen("standaard-choice",
                                 "Hoeveel volwassenen wereldwijd hebben diabetes volgens de IDF 2021?",
                                 "Hormonaal stelsel",
-                                List.of(a17, a18, a19, a20), null);
+                                List.of(a17, a18, a19, a20), null, 0);
 
                 // --- 6 ---
                 Antwoorden a21 = new Antwoorden(true, "Een verhoogde kans op cardiovasculaire complicaties");
@@ -101,7 +101,7 @@ public class DbInitializer {
                 Vragen vraag6 = new Vragen("standaard-choice",
                                 "Wat is een typisch langetermijneffect van chronische hyperglycemie?",
                                 "Cardiovasculair",
-                                List.of(a21, a22, a23, a24), null);
+                                List.of(a21, a22, a23, a24), null, 0);
 
                 // --- 7 ---
                 Antwoorden a25 = new Antwoorden(true, "Microvasculaire en macrovasculaire complicaties");
@@ -111,7 +111,7 @@ public class DbInitializer {
                 Vragen vraag7 = new Vragen("standaard-choice",
                                 "Welke twee hoofdgroepen van complicaties worden veroorzaakt door diabetes?",
                                 "Hormonaal stelsel",
-                                List.of(a25, a26, a27, a28), null);
+                                List.of(a25, a26, a27, a28), null, 0);
 
                 // --- 8 ---
                 Antwoorden a29 = new Antwoorden(true, "Retinopathie, nefropathie, neuropathie");
@@ -120,7 +120,7 @@ public class DbInitializer {
                 Antwoorden a32 = new Antwoorden(false, "Migraine, dementie, bloedarmoede");
                 Vragen vraag8 = new Vragen("standaard-choice", "Wat zijn voorbeelden van microvasculaire complicaties?",
                                 "Hormonaal stelsel",
-                                List.of(a29, a30, a31, a32), null);
+                                List.of(a29, a30, a31, a32), null, 0);
 
                 // --- 9 ---
                 Antwoorden a33 = new Antwoorden(true, "Hart- en vaatziekten");
@@ -130,7 +130,7 @@ public class DbInitializer {
                 Vragen vraag9 = new Vragen("standaard-choice",
                                 "Wat is een voorbeeld van een macrovasculaire verwikkeling bij diabetes?",
                                 "Cardiovasculair", List.of(a33, a34, a35, a36),
-                                null);
+                                null, 0);
 
                 // --- 10 ---
                 Antwoorden a37 = new Antwoorden(true, "Vermoeidheid, polyurie, polydipsie, gewichtsverlies");
@@ -139,7 +139,7 @@ public class DbInitializer {
                 Antwoorden a40 = new Antwoorden(false, "Slaperigheid, spraakstoornissen, verlamming");
                 Vragen vraag10 = new Vragen("standaard-choice",
                                 "Wat zijn typische symptomen van type 1 diabetes bij aanvang?", "Hormonaal stelsel",
-                                List.of(a37, a38, a39, a40), null);
+                                List.of(a37, a38, a39, a40), null, 0);
 
                 // --- 11 ---
                 Antwoorden a41 = new Antwoorden(true, "T-cel gemedieerde destructie van β-cellen");
@@ -148,7 +148,7 @@ public class DbInitializer {
                 Antwoorden a44 = new Antwoorden(false, "Onvoldoende koolhydraatinname");
                 Vragen vraag11 = new Vragen("memory-choice", "Wat is de primaire oorzaak van type 1 diabetes mellitus?",
                                 "Hormonaal stelsel",
-                                List.of(a41, a42, a43, a44), null);
+                                List.of(a41, a42, a43, a44), null, 10);
 
                 // --- 12 ---
                 Antwoorden a45 = new Antwoorden(true, "De incretinehormonen GLP-1 en GIP verhogen de insulinesecretie");
@@ -157,7 +157,7 @@ public class DbInitializer {
                 Antwoorden a48 = new Antwoorden(false, "Incretines veroorzaken hypoglycemie");
                 Vragen vraag12 = new Vragen("memory-choice", "Wat doen incretinehormonen in de regulatie van glucose?",
                                 "Hormonaal stelsel",
-                                List.of(a45, a46, a47, a48), null);
+                                List.of(a45, a46, a47, a48), null, 5);
 
                 // --- 13 ---
                 Antwoorden a49 = new Antwoorden(true,
@@ -167,7 +167,7 @@ public class DbInitializer {
                 Antwoorden a52 = new Antwoorden(false, "De opname van glucose in de spieren");
                 Vragen vraag13 = new Vragen("memory-choice", "Wat beschrijft het incretine-effect?",
                                 "Hormonaal stelsel", List.of(a49, a50, a51, a52),
-                                null);
+                                null, 8);
 
                 // --- 14 ---
                 Antwoorden a53 = new Antwoorden(true, "Het incretine-effect is verminderd");
@@ -176,7 +176,7 @@ public class DbInitializer {
                 Antwoorden a56 = new Antwoorden(false, "Het hangt af van het geslacht");
                 Vragen vraag14 = new Vragen("memory-choice",
                                 "Hoe is het incretine-effect bij patiënten met type 2 diabetes?", "Hormonaal stelsel",
-                                List.of(a53, a54, a55, a56), null);
+                                List.of(a53, a54, a55, a56), null, 10);
 
                 // --- 15 ---
                 Antwoorden a57 = new Antwoorden(true, "Sitagliptine, Linagliptine, Vildagliptine");
@@ -185,7 +185,7 @@ public class DbInitializer {
                 Antwoorden a60 = new Antwoorden(false, "Dapagliflozine, Semaglutide, Liraglutide");
                 Vragen vraag15 = new Vragen("memory-choice", "Wat zijn voorbeelden van DPP-4 inhibitoren?",
                                 "Hormonaal stelsel",
-                                List.of(a57, a58, a59, a60), null);
+                                List.of(a57, a58, a59, a60), null, 5);
 
                 // --- 16 ---
                 Antwoorden a61 = new Antwoorden(true, "Liraglutide, Semaglutide, Dulaglutide");
@@ -194,7 +194,7 @@ public class DbInitializer {
                 Antwoorden a64 = new Antwoorden(false, "Insuline lispro, NPH, Glargine");
                 Vragen vraag16 = new Vragen("memory-choice", "Wat zijn voorbeelden van GLP-1 receptoragonisten?",
                                 "Hormonaal stelsel",
-                                List.of(a61, a62, a63, a64), null);
+                                List.of(a61, a62, a63, a64), null, 8);
 
                 // --- 17 ---
                 Antwoorden a65 = new Antwoorden(true, "Empagliflozine, Dapagliflozine, Canagliflozine");
@@ -203,7 +203,7 @@ public class DbInitializer {
                 Antwoorden a68 = new Antwoorden(false, "Sitagliptine, Linagliptine, Alogliptine");
                 Vragen vraag17 = new Vragen("memory-choice", "Wat zijn voorbeelden van SGLT2-inhibitoren?",
                                 "Hormonaal stelsel",
-                                List.of(a65, a66, a67, a68), null);
+                                List.of(a65, a66, a67, a68), null, 9);
 
                 // --- 18 ---
                 Antwoorden a69 = new Antwoorden(true, "Een SGLT2-remmer vermindert de glucose-reabsorptie in de nier");
@@ -212,7 +212,7 @@ public class DbInitializer {
                 Antwoorden a72 = new Antwoorden(false, "Een SGLT2-remmer verhoogt de eetlust");
                 Vragen vraag18 = new Vragen("memory-choice", "Wat is het werkingsmechanisme van een SGLT2-remmer?",
                                 "Hormonaal stelsel",
-                                List.of(a69, a70, a71, a72), null);
+                                List.of(a69, a70, a71, a72), null, 10);
 
                 // --- 19 ---
                 Antwoorden a73 = new Antwoorden(true, "Type 2 diabetes is verantwoordelijk voor >40% van de gevallen");
@@ -222,7 +222,7 @@ public class DbInitializer {
                 Vragen vraag19 = new Vragen("memory-choice",
                                 "Wat is de belangrijkste oorzaak van chronische nierinsufficiëntie wereldwijd?",
                                 "Uro-genitaal stelsel",
-                                List.of(a73, a74, a75, a76), null);
+                                List.of(a73, a74, a75, a76), null, 5);
 
                 // --- 20 ---
                 Antwoorden a77 = new Antwoorden(true, "Minder dan 60 ml/min/1.73m²");
@@ -231,197 +231,204 @@ public class DbInitializer {
                 Antwoorden a80 = new Antwoorden(false, "Tussen 120 en 150 ml/min/1.73m²");
                 Vragen vraag20 = new Vragen("memory-choice", "Bij welke eGFR spreken we van nierinsufficiëntie?",
                                 "Uro-genitaal stelsel",
-                                List.of(a77, a78, a79, a80), null);
+                                List.of(a77, a78, a79, a80), null, 10);
 
                 // --- 21 ---
                 Antwoorden a81 = new Antwoorden(true, "diarree");
                 Vragen vraag21 = new Vragen("hangman",
                                 "Wat zijn de meest voorkomende bijwerkingen bij de start van metformine?",
                                 "Hormonaal stelsel", List.of(a81),
-                                null);
+                                null, 0);
 
                 // --- 22 ---
                 Antwoorden a85 = new Antwoorden(true, "Maaltijd");
                 Vragen vraag22 = new Vragen("hangman", "Wanneer neem je metformine idealiter in?",
                                 "Hormonaal stelsel",
-                                List.of(a85), null);
+                                List.of(a85), null, 0);
 
                 // --- 23 ---
                 Antwoorden a89 = new Antwoorden(true, "insulinesecretie");
                 Vragen vraag23 = new Vragen("hangman", "Wat stimuleert sulfonylurea?",
                                 "Hormonaal stelsel",
-                                List.of(a89), null);
+                                List.of(a89), null, 0);
 
                 // --- 24 ---
                 Antwoorden a93 = new Antwoorden(true, "Hypoglycemie");
                 Vragen vraag24 = new Vragen("hangman", "Wat is de meest typische bijwerking van sulfonylurea?",
                                 "Hormonaal stelsel",
-                                List.of(a93), null);
+                                List.of(a93), null, 0);
 
                 // --- 25 ---
                 Antwoorden a97 = new Antwoorden(true, "Nierfalen");
-                Vragen vraag25 = new Vragen("hangman", "Welke aandoening vormt een belangrijke contra-indicatie voor sulfonylurea?",
+                Vragen vraag25 = new Vragen("hangman",
+                                "Welke aandoening vormt een belangrijke contra-indicatie voor sulfonylurea?",
                                 "Uro-genitaal stelsel",
-                                List.of(a97), null);
+                                List.of(a97), null, 0);
 
                 // --- 26 ---
                 Antwoorden a101 = new Antwoorden(true, "Veilig");
                 Vragen vraag26 = new Vragen("hangman", "Hoe staat het veiligheidsprofiel van DPP-4-inhibitoren bekend?",
                                 "Hormonaal stelsel",
-                                List.of(a101), null);
+                                List.of(a101), null, 0);
 
                 // --- 27 ---
-                // Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en gewichtsneutraal");
-                // Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4 inhibitoren?",
-                //                 "Hormonaal stelsel",
-                //                 List.of(a105), null);
+                // Antwoorden a105 = new Antwoorden(true, "Cardiorenaal veilig en
+                // gewichtsneutraal");
+                // Vragen vraag27 = new Vragen("hangman", "Wat is een voordeel van DPP-4
+                // inhibitoren?",
+                // "Hormonaal stelsel",
+                // List.of(a105), null);
 
                 // --- 28 ---
                 Antwoorden a109 = new Antwoorden(true, "Gewichtsverlies");
                 Vragen vraag28 = new Vragen("hangman",
                                 "Welk bijkomend positief effect heeft een GLP-1-receptoragonist?", "Cardiovasculair",
-                                List.of(a109), null);
+                                List.of(a109), null, 0);
 
                 // // --- 29 ---
-                // Antwoorden a113 = new Antwoorden(true, "GLP-1 RA heeft cardiovasculaire voordelen");
-                // Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA en cardiovasculair risico?",
-                //                 "Cardiovasculair",
-                //                 List.of(a113), null);
+                // Antwoorden a113 = new Antwoorden(true, "GLP-1 RA heeft cardiovasculaire
+                // voordelen");
+                // Vragen vraag29 = new Vragen("hangman", "Wat tonen studies aan over GLP-1 RA
+                // en cardiovasculair risico?",
+                // "Cardiovasculair",
+                // List.of(a113), null);
 
                 // --- 30 ---
-                // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog toedienen");
-                // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic® injectie?",
-                //                 "Hormonaal stelsel",
-                //                 List.of(a117), null);
+                // Antwoorden a117 = new Antwoorden(true, "Minder dan 5 dagen: alsnog
+                // toedienen");
+                // Vragen vraag30 = new Vragen("hangman", "Wat doe je bij een gemiste Ozempic®
+                // injectie?",
+                // "Hormonaal stelsel",
+                // List.of(a117), null);
 
                 // --- 31 ---
                 Antwoorden a121 = new Antwoorden(true, "Minstens 30 minuten voor het ontbijt");
                 Vragen vraag31 = new Vragen("connect-choice",
                                 "Wanneer moet Rybelsus® (orale semaglutide) worden ingenomen?", "Hormonaal stelsel",
-                                List.of(a121), null);
+                                List.of(a121), null, 0);
 
                 // --- 32 ---
                 Antwoorden a125 = new Antwoorden(true, "Met maximaal 120 ml water doorslikken");
                 Vragen vraag32 = new Vragen("connect-choice",
                                 "Hoe moet Rybelsus® worden ingenomen volgens voorschrift?", "Hormonaal stelsel",
-                                List.of(a125), null);
+                                List.of(a125), null, 0);
 
                 // --- 33 ---
                 Antwoorden a129 = new Antwoorden(true, "Wachten tot 30 minuten na inname om te eten of drinken");
                 Vragen vraag33 = new Vragen("connect-choice",
                                 "Wat is belangrijk na inname van orale semaglutide (Rybelsus®)?", "Hormonaal stelsel",
-                                List.of(a129), null);
+                                List.of(a129), null, 0);
 
                 // --- 34 ---
                 Antwoorden a133 = new Antwoorden(true, "Misselijkheid en braken");
                 Vragen vraag34 = new Vragen("connect-choice",
                                 "Wat is de meest voorkomende nevenwerking van GLP-1 receptoragonisten?",
                                 "Hormonaal stelsel",
-                                List.of(a133), null);
+                                List.of(a133), null, 0);
 
                 // --- 35 ---
                 Antwoorden a137 = new Antwoorden(true, "Kleine porties en vetarme maaltijden");
                 Vragen vraag35 = new Vragen("connect-choice",
                                 "Welke voedingsadviezen helpen bij GLP-1-gerelateerde misselijkheid?",
                                 "Gezonde levensstijl", List.of(a137),
-                                null);
+                                null, 0);
 
                 // --- 36 ---
                 Antwoorden a141 = new Antwoorden(true, "≥150 minuten matige activiteit per week");
                 Vragen vraag36 = new Vragen("connect-choice",
                                 "Wat is de aanbevolen hoeveelheid fysieke activiteit per week bij diabetes?",
                                 "Gezonde levensstijl",
-                                List.of(a141), null);
+                                List.of(a141), null, 0);
 
                 // --- 37 ---
                 Antwoorden a145 = new Antwoorden(true, "5-10% gewichtsverlies verlaagt cardiovasculair risico");
                 Vragen vraag37 = new Vragen("connect-choice",
                                 "Wat is het effect van gewichtsverlies op cardiovasculaire risico's bij diabetes?",
                                 "Cardiovasculair",
-                                List.of(a145), null);
+                                List.of(a145), null, 0);
 
                 // --- 38 ---
                 Antwoorden a149 = new Antwoorden(true,
                                 "Hart- en vaatziekten zijn oorzaak van 60–80% van de sterfte bij diabetes");
                 Vragen vraag38 = new Vragen("connect-choice",
                                 "Wat is de belangrijkste doodsoorzaak bij diabetespatiënten?", "Cardiovasculair",
-                                List.of(a149), null);
+                                List.of(a149), null, 0);
 
                 // --- 39 ---
                 Antwoorden a153 = new Antwoorden(true, "SGLT2-remmers verminderen ziekenhuisopnames voor hartfalen");
                 Vragen vraag39 = new Vragen("connect-choice", "Wat is het effect van SGLT2-inhibitoren op hartfalen?",
                                 "Cardiovasculair",
-                                List.of(a153), null);
+                                List.of(a153), null, 0);
 
                 // --- 40 ---
                 Antwoorden a157 = new Antwoorden(true, "Chronische nierschade");
                 Vragen vraag40 = new Vragen("connect-choice",
                                 "Welke complicatie treedt vaak op bij diabetes en beïnvloedt eGFR?",
                                 "Uro-genitaal stelsel",
-                                List.of(a157), null);
+                                List.of(a157), null, 0);
 
                 // --- 41 ---
                 Antwoorden a161 = new Antwoorden(true, "Reversie mogelijk bij vroegtijdige gewichtsreductie");
                 Vragen vraag41 = new Vragen("connect-choice", "Wat geldt voor type 2 diabetes bij gewichtsverlies?",
                                 "Hormonaal stelsel",
-                                List.of(a161), null);
+                                List.of(a161), null, 0);
 
                 // --- 42 ---
                 Antwoorden a165 = new Antwoorden(true, "Tirzepatide is een GLP-1/GIP receptoragonist");
                 Vragen vraag42 = new Vragen("connect-choice", "Wat is tirzepatide (Mounjaro)?", "Hormonaal stelsel",
                                 List.of(a165),
-                                null);
+                                null, 0);
 
                 // --- 43 ---
                 Antwoorden a169 = new Antwoorden(true, "Grotere HbA1c-daling dan semaglutide");
                 Vragen vraag43 = new Vragen("connect-choice", "Wat toonde de SURPASS-studie aan over tirzepatide?",
                                 "Hormonaal stelsel",
-                                List.of(a169), null);
+                                List.of(a169), null, 0);
 
                 // --- 44 ---
                 Antwoorden a173 = new Antwoorden(true, "≥15% gewichtsverlies geeft betere metabole controle");
                 Vragen vraag44 = new Vragen("connect-choice", "Wat is het verband tussen gewichtsverlies en HbA1c?",
                                 "Hormonaal stelsel",
-                                List.of(a173), null);
+                                List.of(a173), null, 0);
 
                 // --- 45 ---
                 Antwoorden a177 = new Antwoorden(true, "Orforglipron is een niet-peptide orale GLP-1 RA");
                 Vragen vraag45 = new Vragen("connect-choice", "Wat is orforglipron?", "Hormonaal stelsel",
-                                List.of(a177), null);
+                                List.of(a177), null, 0);
 
                 // --- 46 ---
                 Antwoorden a181 = new Antwoorden(true, "GLP-1, GIP en glucagon receptoragonist");
                 Vragen vraag46 = new Vragen("connect-choice", "Wat is het werkingsmechanisme van retatrutide?",
                                 "Hormonaal stelsel",
-                                List.of(a181), null);
+                                List.of(a181), null, 0);
 
                 // --- 47 ---
                 Antwoorden a185 = new Antwoorden(true, "HbA1c > 7.5% en BMI ≥ 30 kg/m²");
                 Vragen vraag47 = new Vragen("connect-choice",
                                 "Wat zijn de Belgische terugbetalingsvoorwaarden voor GLP-1 RA?",
                                 "GGG: Goed geneesmiddelengebruik",
-                                List.of(a185), null);
+                                List.of(a185), null, 0);
 
                 // --- 48 ---
                 Antwoorden a189 = new Antwoorden(true, "HbA1c tussen 7% en 9%");
                 Vragen vraag48 = new Vragen("connect-choice",
                                 "Wat is de HbA1c-voorwaarde voor SGLT2-inhibitor terugbetaling in België?",
                                 "GGG: Goed geneesmiddelengebruik",
-                                List.of(a189), null);
+                                List.of(a189), null, 0);
 
                 // --- 49 ---
                 Antwoorden a193 = new Antwoorden(true, "Een eGFR > 60 ml/min");
                 Vragen vraag49 = new Vragen("connect-choice",
                                 "Wat is de eGFR-voorwaarde voor gebruik van SGLT2-inhibitoren in België?",
                                 "GGG: Goed geneesmiddelengebruik",
-                                List.of(a193), null);
+                                List.of(a193), null, 0);
 
                 // --- 50 ---
                 Antwoorden a197 = new Antwoorden(true, "Maximaal 4 educatiesessies per jaar van 30 minuten");
                 Vragen vraag50 = new Vragen("connect-choice",
                                 "Wat voorziet het Belgische starttraject diabetes inzake educatie?",
                                 "GGG: Goed geneesmiddelengebruik",
-                                List.of(a197), null);
+                                List.of(a197), null, 0);
 
                 // // --- 21 ---
                 // Antwoorden a81 = new Antwoorden(true, "Misselijkheid en diarree, meestal

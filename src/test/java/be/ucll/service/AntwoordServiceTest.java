@@ -1,70 +1,68 @@
 package be.ucll.service;
 
-// import static org.junit.jupiter.api.Assertions.*;
-// import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-// import org.junit.jupiter.api.BeforeEach;
-// import org.junit.jupiter.api.Test;
-// import org.mockito.InjectMocks;
-// import org.mockito.Mock;
-// import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-// import be.ucll.model.Antwoorden;
-// import be.ucll.repository.AntwoordenRepository;
+import be.ucll.model.Antwoorden;
+import be.ucll.repository.AntwoordenRepository;
 
 public class AntwoordServiceTest {
     
-    // @Mock
-    // private AntwoordenRepository antwoordenRepository;
+    @Mock
+    private AntwoordenRepository antwoordenRepository;
 
-    // @InjectMocks
-    // private AntwoordenService antwoordenService;
+    @InjectMocks
+    private AntwoordenService antwoordenService;
 
-    // @BeforeEach
-    // void setUp() {
-    //     MockitoAnnotations.openMocks(this);
-    // }
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-    // @Test
-    // void testVoegAntwoordToe_Success() {
-    //     Antwoorden antwoord = new Antwoorden(true, "Dit is een correct antwoord");
-    //     when(antwoordenRepository.save(any(Antwoorden.class))).thenReturn(antwoord);
+    @Test
+    void testVoegAntwoordToe_Success() {
+        Antwoorden antwoord = new Antwoorden(true, "Dit is een correct antwoord");
+        when(antwoordenRepository.save(any(Antwoorden.class))).thenReturn(antwoord);
         
-    //     Antwoorden resultaat = antwoordenService.voegAntwoordToe(antwoord);
+        Antwoorden resultaat = antwoordenService.voegAntwoordToe(antwoord);
         
-    //     assertNotNull(resultaat);
-    //     assertEquals("Dit is een correct antwoord", resultaat.getAntwoord());
-    //     assertTrue(resultaat.getCorrect());
-    // }
+        assertNotNull(resultaat);
+        assertEquals("Dit is een correct antwoord", resultaat.getAntwoord());
+        assertTrue(resultaat.getCorrect());
+    }
 
-    // @Test
-    // void testVindAntwoordById_Success() {
-    //     Long id = 1L;
-    //     Antwoorden antwoord = new Antwoorden(true, "Test antwoord");
-    //     when(antwoordenRepository.findById(id)).thenReturn(java.util.Optional.of(antwoord));
+    @Test
+    void testVindAntwoordById_Success() {
+        Long id = 1L;
+        Antwoorden antwoord = new Antwoorden(true, "Test antwoord");
+        when(antwoordenRepository.findById(id)).thenReturn(java.util.Optional.of(antwoord));
         
-    //     Antwoorden gevondenAntwoord = antwoordenService.getAntwoordById(id);
+        Antwoorden gevondenAntwoord = antwoordenService.getAntwoordById(id);
         
-    //     assertNotNull(gevondenAntwoord);
-    //     assertEquals("Test antwoord", gevondenAntwoord.getAntwoord());
-    // }
+        assertNotNull(gevondenAntwoord);
+        assertEquals("Test antwoord", gevondenAntwoord.getAntwoord());
+    }
 
-    // @Test
-    // void testVoegAntwoordToe_MetLeegAntwoord() {
-    //     Antwoorden antwoord = new Antwoorden(true, "");
-        
-    //     assertThrows(IllegalArgumentException.class, () -> {
-    //         antwoordenService.voegAntwoordToe(antwoord);
-    //     });
-    // }
+    @Test
+    void testVoegAntwoordToe_MetLeegAntwoord() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Antwoorden(true, "");
+        });
+    }
 
-    // @Test
-    // void testVindAntwoordById_NietGevonden() {
-    //     Long id = 999L;
-    //     when(antwoordenRepository.findById(id)).thenReturn(java.util.Optional.empty());
+    @Test
+    void testVindAntwoordById_NietGevonden() {
+        Long id = 999L;
+        when(antwoordenRepository.findById(id)).thenReturn(java.util.Optional.empty());
         
-    //     assertThrows(RuntimeException.class, () -> {
-    //         antwoordenService.getAntwoordById(id);
-    //     });
-    // }
+        assertThrows(RuntimeException.class, () -> {
+            antwoordenService.getAntwoordById(id);
+        });
+    }
 }
