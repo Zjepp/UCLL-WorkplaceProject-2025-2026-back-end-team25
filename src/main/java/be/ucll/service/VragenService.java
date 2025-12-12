@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -80,20 +82,37 @@ public class VragenService {
     }
 
     public int addVragenFromCsv(MultipartFile file) {
+        Logger log = LoggerFactory.getLogger(UserService.class);
         int count = 0;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+        int lineNumber = 0;
+
+        log.info("Start verwerken CSV: filename={}, size={} bytes, contentType={}",
+                file.getOriginalFilename(), file.getSize(), file.getContentType());
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "UTF-8"))) {
             String line;
             boolean firstLine = true;
             while ((line = reader.readLine()) != null) {
+                lineNumber++;
+                line = line.trim();
+
+                if (line.isEmpty()) {
+                    log.debug("Lege lijn {} - skipped", lineNumber);
+                    continue;
+                }
+
                 if (firstLine) {
+                    log.info("Header lijn {}: {}", lineNumber, line);
                     firstLine = false;
                     continue;
-                } // skip header
+                }
 
-                String[] parts = line.split(",");
-                if (parts.length < 4)
+                log.debug("Verwerken lijn {}: {}", lineNumber, line);
+
+                String[] parts = line.split(";");
+                if (parts.length < 4) {
+                    log.warn("Te weinig kolommen in lijn {} ({} parts) - skipped", lineNumber, parts.length);
                     continue;
-
+                }
                 String type = parts[0].trim();
                 String vraag = parts[1].trim();
                 String category = parts[2].trim();
@@ -112,10 +131,16 @@ public class VragenService {
 
                 vragenRepository.save(newVraag);
                 count++;
+
             }
+
+            log.info("CSV verwerking klaar: {} lijnen verwerkt, {} vragen aangemaakt", lineNumber, count);
+
         } catch (Exception e) {
+            log.error("Fout bij inlezen CSV: {}", e.getMessage(), e);
             throw new RuntimeException("Fout bij inlezen CSV: " + e.getMessage());
         }
+
         return count;
     }
 
