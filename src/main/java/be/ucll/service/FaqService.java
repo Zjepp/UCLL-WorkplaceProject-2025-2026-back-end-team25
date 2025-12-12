@@ -46,4 +46,9 @@ public class FaqService {
 
         return faqRepository.save(bestaande);
     }
+
+    public Faq saveFaq(Faq faq) {
+        faqRepository.save(faq);
+        return faq;
+    }
 }
