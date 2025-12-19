@@ -31,11 +31,11 @@ public class Vragen {
     private String category;
     private int tijd;
 
-    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "vraag-antwoorden")
     private List<Antwoorden> antwoorden = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "vraag-resultaat")
     private List<Resultaat> resultaat = new ArrayList<>();
 

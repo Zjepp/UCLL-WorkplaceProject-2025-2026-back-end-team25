@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -35,7 +36,7 @@ public class Resultaat {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    @JsonBackReference(value = "vraag-resultaat")
+    @JsonIgnore // Dit breekt elke mogelijke loop definitief
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
