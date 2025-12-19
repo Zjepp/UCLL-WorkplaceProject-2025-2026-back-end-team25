@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import be.ucll.model.Antwoorden;
 import be.ucll.model.Faq;
-import be.ucll.model.Faq;
 import be.ucll.repository.FaqRepository;
 
 @Service
