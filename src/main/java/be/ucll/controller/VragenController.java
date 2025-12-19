@@ -51,6 +51,12 @@ public class VragenController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return vragenService.getAllCategories();
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/category/{category}")
     public List<Vragen> getQuestionsByCategory(@org.springframework.web.bind.annotation.PathVariable String category) {
         return vragenService.getQuestionsByCategory(category);
@@ -60,6 +66,22 @@ public class VragenController {
     @PostMapping
     public Vragen createVraag(@RequestBody Vragen vraag) {
         return vragenService.saveVraag(vraag);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/upload-csv")
+    public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Bestand is leeg");
+        }
+        int added = vragenService.addVragenFromCsv(file);
+        return ResponseEntity.ok(added + " vragen succesvol toegevoegd");
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PutMapping
+    public Vragen updateVraag(@RequestBody Vragen vraag) {
+        return vragenService.updateVraag(vraag);
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
@@ -74,26 +96,6 @@ public class VragenController {
         return vragenService.getVraagById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-    @PutMapping
-    public Vragen updateVraag(@RequestBody Vragen vraag) {
-        return vragenService.updateVraag(vraag);
-    }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/upload-csv")
-    public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("Bestand is leeg");
-        }
-        int added = vragenService.addVragenFromCsv(file);
-        return ResponseEntity.ok(added + " vragen succesvol toegevoegd");
-    }
-
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-    @GetMapping("/categories")
-    public List<String> getAllCategories() {
-        return vragenService.getAllCategories();
-    }
+    
 
 }

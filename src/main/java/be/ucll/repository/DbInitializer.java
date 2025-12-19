@@ -14,10 +14,12 @@ import be.ucll.model.Faq;
 import be.ucll.model.Resultaat;
 import be.ucll.model.User;
 import be.ucll.model.Vragen;
+import be.ucll.model.Category;
 import be.ucll.model.User.Role;
 import jakarta.annotation.PostConstruct;
 
 @Component
+
 public class DbInitializer {
 
         private UserRepository userRepository;
@@ -25,6 +27,7 @@ public class DbInitializer {
         private AntwoordenRepository antwoordenRepository;
         private ResultaatRepository resultaatRepository;
         private FaqRepository faqRepository;
+        private CategoryRepository categoryRepository;
 
         @Autowired
         private BCryptPasswordEncoder passwordEncoder;
@@ -32,16 +35,48 @@ public class DbInitializer {
         @Autowired
         public DbInitializer(UserRepository userRepository, VragenRepository vragenRepository,
                         AntwoordenRepository antwoordenRepository, ResultaatRepository resultaatRepository,
-                        FaqRepository faqRepository) {
+                        FaqRepository faqRepository, CategoryRepository categoryRepository) {
                 this.userRepository = userRepository;
                 this.vragenRepository = vragenRepository;
                 this.antwoordenRepository = antwoordenRepository;
                 this.resultaatRepository = resultaatRepository;
                 this.faqRepository = faqRepository;
+                this.categoryRepository = categoryRepository;
         }
 
         @PostConstruct
         public void initialize() {
+                // Voeg standaardcategorieën toe als ze nog niet bestaan
+                if (categoryRepository.count() == 0) {
+                    categoryRepository.save(new Category("Cardiovasculair"));
+                    categoryRepository.save(new Category("Gastro-intestinaal"));
+                    categoryRepository.save(new Category("Respiratoir stelsel"));
+                    categoryRepository.save(new Category("Hormonaal stelsel"));
+                    categoryRepository.save(new Category("Pijn"));
+                    categoryRepository.save(new Category("Centraal zenuwstelsel"));
+                    categoryRepository.save(new Category("Infecties & immuniteit"));
+                    categoryRepository.save(new Category("Uro-genitaal stelsel"));
+                    categoryRepository.save(new Category("Osteo-articulaire aandoeningen"));
+                    categoryRepository.save(new Category("Kanker"));
+                    categoryRepository.save(new Category("Dermatologie"));
+                    categoryRepository.save(new Category("Oftalmologie"));
+                    categoryRepository.save(new Category("Toxicomanie"));
+                    categoryRepository.save(new Category("Mentaal welzijn"));
+                    categoryRepository.save(new Category("Veterinair"));
+                    categoryRepository.save(new Category("Gezonde levensstijl"));
+                    categoryRepository.save(new Category("Geriatrische patiënt"));
+                    categoryRepository.save(new Category("Pediatrische patiënt"));
+                    categoryRepository.save(new Category("Zwangerschap & borstvoeding"));
+                    categoryRepository.save(new Category("Fytotherapeutica"));
+                    categoryRepository.save(new Category("Vaccinatie"));
+                    categoryRepository.save(new Category("Medicatienazicht"));
+                    categoryRepository.save(new Category("Medische materialen"));
+                    categoryRepository.save(new Category("Communicatie"));
+                    categoryRepository.save(new Category("GGG: Goed geneesmiddelengebruik"));
+                    categoryRepository.save(new Category("Magistrale bereidingen"));
+                    categoryRepository.save(new Category("Actua"));
+                }
+
                 // Create the answer and question
 
                 // Save the question first (this cascades Antwoorden)
