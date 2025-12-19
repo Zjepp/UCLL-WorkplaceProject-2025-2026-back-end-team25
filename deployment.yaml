@@ -14,6 +14,7 @@ spec:
       labels:
         app: ipsa-vzw-backend
     spec:
+      automountServiceAccountToken: false
       containers:
       - name: backend
         image: ghcr.io/ucll-workplaceproject-2025-2026/back-end-team25:main
