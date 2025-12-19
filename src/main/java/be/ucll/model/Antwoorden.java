@@ -1,8 +1,8 @@
 package be.ucll.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +20,7 @@ public class Antwoorden {
     private Long id;
 
     private Boolean correct;
+    @Column(name = "answer")
     private String antwoord;
 
     // @OneToMany(mappedBy = "antwoorden")
@@ -27,7 +28,7 @@ public class Antwoorden {
 
     @ManyToOne
     @JoinColumn(name = "vragen_id")
-    @JsonBackReference
+    @JsonBackReference(value = "vraag-antwoorden") // <-- dezelfde value
     private Vragen vragen;
 
     public Antwoorden(Boolean correct, String antwoord) {

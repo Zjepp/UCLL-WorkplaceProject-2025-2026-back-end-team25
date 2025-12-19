@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,22 +26,28 @@ public class Vragen {
     private Long id;
 
     private String type;
+    @Column(name = "question")
     private String vraag;
+    private String category;
+    private int tijd;
 
-    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "vraag-antwoorden")
     private List<Antwoorden> antwoorden = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "vraag-resultaat")
-    private List<Resultaat> resultaat;
+    @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "vraag-resultaat")
+    private List<Resultaat> resultaat = new ArrayList<>();
 
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;
 
-    public Vragen(String type, String vraag, List<Antwoorden> antwoorden, List<Resultaat> resultaat) {
+    public Vragen(String type, String vraag, String category, List<Antwoorden> antwoorden,
+            List<Resultaat> resultaat, int tijd) {
         this.type = type;
         this.vraag = vraag;
+        this.category = category;
+        this.tijd = tijd;
         this.antwoorden = antwoorden;
         if (antwoorden != null) {
             for (Antwoorden a : antwoorden) {
@@ -53,8 +60,20 @@ public class Vragen {
     public Vragen() {
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public int getTijd() {
+        return tijd;
+    }
+
+    public void setTijd(int tijd) {
+        this.tijd = tijd;
     }
 
     public String getType() {
@@ -71,6 +90,14 @@ public class Vragen {
 
     public void setVraag(String vraag) {
         this.vraag = vraag;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<Antwoorden> getAntwoorden() {

@@ -2,9 +2,13 @@ package be.ucll.model;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +18,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "resultaat")
 public class Resultaat {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "resultaat")
     private String resultaat;
 
     @ManyToOne
@@ -31,8 +35,8 @@ public class Resultaat {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "vraag_id")
-    @JsonManagedReference(value = "vraag-resultaat")
+    @JoinColumn(name = "question_id")
+    @JsonIgnore // Dit breekt elke mogelijke loop definitief
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
@@ -47,7 +51,7 @@ public class Resultaat {
             if (!resultaat.endsWith("%")) {
                 throw new IllegalArgumentException();
             }
-            
+
             String numberPart = resultaat.replace("%", "");
             try {
                 int percentage = Integer.parseInt(numberPart);
@@ -72,11 +76,18 @@ public class Resultaat {
         return resultaat;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public Vragen getVraag() {
+        return this.vragen;
+    }
+
     @Override
     public String toString() {
         return "resultaaten [id=" + id + ", resultaat=" + resultaat + "]";
     }
-
 
     public void setUser(User user) {
         this.user = user;
@@ -85,5 +96,5 @@ public class Resultaat {
     public void setVraag(Vragen vragen) {
         this.vragen = vragen;
     }
-    
+
 }

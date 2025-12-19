@@ -3,11 +3,14 @@ package be.ucll.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,21 +29,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "score")
     private int score;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "user-resultaat")
     private List<Resultaat> resultaat = new ArrayList<>();
 
+    public User() {
+    }
 
-    public User () {}
-
-    public User(String name, String email, String username, int score, String password, Role role, List<Resultaat> resultaat) {
+    public User(String name, String email, String username, int score, String password, Role role,
+            List<Resultaat> resultaat) {
         setName(name);
         setEmail(email);
         setUsername(username);
@@ -54,7 +70,7 @@ public class User {
         return id;
     }
 
-    public void setId (Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,7 +106,7 @@ public class User {
         this.score = score;
     }
 
-    public String getPassword () {
+    public String getPassword() {
         return password;
     }
 
@@ -106,7 +122,8 @@ public class User {
         this.role = role;
     }
 
-    public List<Resultaat> getResultaat(){
+    public List<Resultaat> getResultaat() {
         return resultaat;
     }
+
 }
