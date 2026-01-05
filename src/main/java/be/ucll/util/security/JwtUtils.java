@@ -31,17 +31,18 @@ public class JwtUtils {
     @Autowired
     UserRepository userRepository;
 
-    // private static final String secret = System.getenv("JWT_SECRET");
-    private static final String secret = System.getenv("JWT_SECRET");
+    @Value("${jwt.secret:#{null}}")
+    private String secret;
     
     private final int jwtExpiration = 86400000; // TODO: DISCUSS EXPIRATION DATE
-    private final Key key;
+    private Key key;
 
-    public JwtUtils() {
-        this.key = new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.getJcaName());
+    @PostConstruct
+    public void init() {
         if (secret == null || secret.isEmpty()) {
-            throw new IllegalStateException("JWT_SECRET environment variable is not set.");
+            throw new IllegalStateException("jwt.secret property is not set in application properties.");
         }
+        this.key = new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.getJcaName());
     }
 
     public String generateJwtToken(String email) throws ServiceException {

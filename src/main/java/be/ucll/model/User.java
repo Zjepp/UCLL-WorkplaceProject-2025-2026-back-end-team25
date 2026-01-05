@@ -47,10 +47,8 @@ public class User {
     @Column(name = "role")
     private Role role;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "user-resultaat")
-    private List<Resultaat> resultaat = new ArrayList<>();
+    private List<Resultaat> resultaat = new ArrayList<>(); // geen annotatie nodig → wordt getoond
 
     public User() {
     }

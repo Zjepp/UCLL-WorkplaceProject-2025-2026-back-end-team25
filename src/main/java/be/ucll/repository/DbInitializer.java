@@ -817,11 +817,12 @@ public class DbInitializer {
                 // vragenRepository.save(vraag80);
 
                 // Now create user and result (linking them after question exists)
-                User user1 = new User("Henk", "henk@hotmail.com", "henkie", 0, passwordEncoder.encode("henk"),
+                User user1 = new User("henkmertens", "henk@gmail.com", "henkie", 0,
+                                passwordEncoder.encode("henkmertens"),
                                 User.Role.USER, null);
                 userRepository.save(user1); // persist user to get an ID
 
-                User user2 = new User("Admin", "admin@hotmail.com", "admin", 0, passwordEncoder.encode("admin"),
+                User user2 = new User("admin", "admin@ipsa.com", "admin", 0, passwordEncoder.encode("admin"),
                                 User.Role.ADMIN, null);
                 userRepository.save(user2); // persist user to get an ID
 

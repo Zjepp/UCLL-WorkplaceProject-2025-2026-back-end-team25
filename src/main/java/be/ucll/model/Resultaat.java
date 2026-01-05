@@ -31,12 +31,12 @@ public class Resultaat {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference(value = "user-resultaat")
+    @JsonIgnore // blokkeert user in JSON
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    @JsonIgnore // Dit breekt elke mogelijke loop definitief
+    @JsonIgnore // blokkeert vraag in JSON
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
