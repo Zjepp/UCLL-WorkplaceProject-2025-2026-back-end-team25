@@ -32,12 +32,10 @@ public class Vragen {
     private int tijd;
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vraag-antwoorden")
-    private List<Antwoorden> antwoorden = new ArrayList<>();
+    private List<Antwoorden> antwoorden = new ArrayList<>(); // geen annotatie → wordt getoond
 
     @OneToMany(mappedBy = "vragen", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vraag-resultaat")
-    private List<Resultaat> resultaat = new ArrayList<>();
+    private List<Resultaat> resultaat = new ArrayList<>(); // geen annotatie → wordt getoond
 
     // @OneToMany(mappedBy = "antwoorden")
     // private java.util.List<Vragen> vragen;

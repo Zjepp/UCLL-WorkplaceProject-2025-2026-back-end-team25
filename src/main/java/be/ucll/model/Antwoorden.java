@@ -1,6 +1,7 @@
 package be.ucll.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +29,7 @@ public class Antwoorden {
 
     @ManyToOne
     @JoinColumn(name = "vragen_id")
-    @JsonBackReference(value = "vraag-antwoorden") // <-- dezelfde value
+    @JsonIgnore // blokkeert vraag in JSON
     private Vragen vragen;
 
     public Antwoorden(Boolean correct, String antwoord) {
