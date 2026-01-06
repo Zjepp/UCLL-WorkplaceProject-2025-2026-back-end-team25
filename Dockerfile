@@ -9,13 +9,13 @@ COPY .mvn .mvn
 # Copy the pom.xml and the project files to the container
 COPY pom.xml .
 
-# Download dependencies first (for better caching)
-RUN mvn dependency:go-offline -B || mvn dependency:resolve -B || true
+# Download dependencies first (for better caching) using custom settings
+RUN mvn dependency:go-offline -B -s .mvn/settings.xml || mvn dependency:resolve -B -s .mvn/settings.xml || true
 
 COPY src ./src
 
 # Build the application using Maven (Spring Boot plugin will repackage automatically)
-RUN mvn clean package -DskipTests -B
+RUN mvn clean package -DskipTests -B -s .mvn/settings.xml
 # Use Eclipse Temurin (recommended replacement for OpenJDK)
 FROM eclipse-temurin:21-jre
 # Set the working directory in the container
