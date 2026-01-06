@@ -14,8 +14,8 @@ RUN mvn dependency:go-offline -B || mvn dependency:resolve -B || true
 
 COPY src ./src
 
-# Build the application using Maven with retry logic
-RUN mvn clean package spring-boot:repackage -DskipTests -B
+# Build the application using Maven (Spring Boot plugin will repackage automatically)
+RUN mvn clean package -DskipTests -B
 # Use Eclipse Temurin (recommended replacement for OpenJDK)
 FROM eclipse-temurin:21-jre
 # Set the working directory in the container
