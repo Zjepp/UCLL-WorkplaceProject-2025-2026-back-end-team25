@@ -2,11 +2,20 @@
 FROM maven:3.9.9-amazoncorretto-21 AS build
 # Set the working directory in the container
 WORKDIR /app
+
+# Copy Maven settings for mirror configuration
+COPY .mvn .mvn
+
 # Copy the pom.xml and the project files to the container
 COPY pom.xml .
+
+# Download dependencies first (for better caching)
+RUN mvn dependency:go-offline -B || mvn dependency:resolve -B || true
+
 COPY src ./src
-# Build the application using Maven
-RUN mvn clean package spring-boot:repackage -DskipTests
+
+# Build the application using Maven with retry logic
+RUN mvn clean package spring-boot:repackage -DskipTests -B
 # Use Eclipse Temurin (recommended replacement for OpenJDK)
 FROM eclipse-temurin:21-jre
 # Set the working directory in the container
