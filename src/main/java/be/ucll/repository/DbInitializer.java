@@ -43,7 +43,12 @@ public class DbInitializer {
         @PostConstruct
         public void initialize() {
                 // Create the answer and question
-
+                userRepository.deleteAll();
+                vragenRepository.deleteAll();
+                antwoordenRepository.deleteAll();
+                resultaatRepository.deleteAll();
+                faqRepository.deleteAll();
+                
                 // Save the question first (this cascades Antwoorden)
 
                 // --- 1 ---
