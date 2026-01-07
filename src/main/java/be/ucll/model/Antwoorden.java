@@ -1,7 +1,7 @@
 package be.ucll.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class Antwoorden {
     private Long id;
 
     private Boolean correct;
-    @Column(name="answer")
+    @Column(name = "answer")
     private String antwoord;
 
     // @OneToMany(mappedBy = "antwoorden")
@@ -29,7 +29,7 @@ public class Antwoorden {
 
     @ManyToOne
     @JoinColumn(name = "vragen_id")
-    @JsonBackReference
+    @JsonIgnore // blokkeert vraag in JSON
     private Vragen vragen;
 
     public Antwoorden(Boolean correct, String antwoord) {

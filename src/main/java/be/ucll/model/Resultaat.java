@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -30,12 +31,12 @@ public class Resultaat {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference(value = "user-resultaat")
+    @JsonIgnore // blokkeert user in JSON
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    @JsonBackReference(value = "vraag-resultaat")
+    @JsonIgnore // blokkeert vraag in JSON
     private Vragen vragen;
 
     public Resultaat(String resultaat) {
