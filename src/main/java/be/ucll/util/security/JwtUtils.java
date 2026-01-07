@@ -38,10 +38,10 @@ public class JwtUtils {
     private final Key key;
 
     public JwtUtils() {
-        this.key = new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.getJcaName());
         if (secret == null || secret.isEmpty()) {
             throw new IllegalStateException("JWT_SECRET environment variable is not set.");
         }
+        this.key = new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.getJcaName());
     }
 
     public String generateJwtToken(String email) throws ServiceException {
