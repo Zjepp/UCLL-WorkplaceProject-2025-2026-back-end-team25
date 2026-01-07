@@ -19,6 +19,7 @@ import be.ucll.repository.VragenRepository;
 @Service
 public class VragenService {
 
+    private static final Logger log = LoggerFactory.getLogger(VragenService.class);
     private AntwoordenRepository antwoordenRepository;
     private VragenRepository vragenRepository;
 
@@ -40,15 +41,37 @@ public class VragenService {
     }
 
     public List<Vragen> getQuestionsByCategory(String category) {
+        log.info("[VragenService] Fetching questions for category: '{}' (length: {})", category, category.length());
+        
         List<Vragen> connectChoiceQuestions = vragenRepository.find8ConnectChoiceQuestionsByCategory(category);
+        log.info("[VragenService] Found {} connect-choice questions for '{}'", connectChoiceQuestions.size(), category);
+        
         List<Vragen> otherQuestions = vragenRepository.find18OtherQuestionsByCategory(category);
+        log.info("[VragenService] Found {} other questions for '{}'", otherQuestions.size(), category);
 
         connectChoiceQuestions.addAll(otherQuestions);
+        log.info("[VragenService] Total questions for category '{}': {}", category, connectChoiceQuestions.size());
+        
+        // If no questions found, log all categories in DB for debugging
+        if (connectChoiceQuestions.isEmpty()) {
+            List<String> allCategories = vragenRepository.findAllCategories();
+            log.warn("[VragenService] No questions found! Available categories in DB: {}", allCategories);
+        }
+        
         return connectChoiceQuestions;
     }
 
     public Vragen saveVraag(Vragen vraag) {
-        return vragenRepository.save(vraag);
+        // Zorg ervoor dat antwoorden correct gekoppeld zijn aan de vraag
+        if (vraag.getAntwoorden() != null) {
+            for (Antwoorden antwoord : vraag.getAntwoorden()) {
+                antwoord.setVragen(vraag);
+            }
+        }
+        log.info("[VragenService] Saving vraag with category: '{}', type: '{}'", vraag.getCategory(), vraag.getType());
+        Vragen saved = vragenRepository.save(vraag);
+        log.info("[VragenService] Vraag saved with id: {}, category in DB: '{}'", saved.getId(), saved.getCategory());
+        return saved;
     }
 
     public void deleteVraag(Long id) {
@@ -68,6 +91,8 @@ public class VragenService {
         // Update velden
         bestaande.setVraag(updatedVraag.getVraag());
         bestaande.setType(updatedVraag.getType());
+        bestaande.setCategory(updatedVraag.getCategory());
+        bestaande.setTijd(updatedVraag.getTijd());
 
         // Verwijder oude antwoorden
         antwoordenRepository.deleteAll(bestaande.getAntwoorden());

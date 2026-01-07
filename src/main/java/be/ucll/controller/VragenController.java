@@ -59,7 +59,10 @@ public class VragenController {
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/category/{category}")
     public List<Vragen> getQuestionsByCategory(@org.springframework.web.bind.annotation.PathVariable String category) {
-        return vragenService.getQuestionsByCategory(category);
+        System.out.println("[VragenController] Received request for category: '" + category + "'");
+        List<Vragen> questions = vragenService.getQuestionsByCategory(category);
+        System.out.println("[VragenController] Returning " + questions.size() + " questions");
+        return questions;
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

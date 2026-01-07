@@ -102,17 +102,18 @@ public class Vragen {
         return antwoorden;
     }
 
-    // public void setAntwoorden() {
-    // this.antwoorden = antwoorden;
-    // }
+    public void setAntwoorden(List<Antwoorden> antwoorden) {
+        this.antwoorden = antwoorden;
+        if (antwoorden != null) {
+            for (Antwoorden a : antwoorden) {
+                a.setVragen(this);
+            }
+        }
+    }
 
     @Override
     public String toString() {
         return "Vragen [id=" + id + ", type=" + type + ", vraag=" + vraag + "]";
     }
-
-    // public void setAntwoorden(List<Antwoorden> antwoorden) {
-    // this.antwoorden = antwoorden;
-    // }
 
 }
