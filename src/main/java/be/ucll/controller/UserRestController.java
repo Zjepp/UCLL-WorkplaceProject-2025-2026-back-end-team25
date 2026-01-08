@@ -59,7 +59,10 @@ public class UserRestController {
             return ResponseEntity.badRequest().body("Bestand is leeg");
         }
         int added = userService.addUsersFromCsv(file);
-        return ResponseEntity.ok(added + " gebruikers succesvol toegevoegd");
+        if (added == 0) {
+            return ResponseEntity.ok("Geen nieuwe gebruikers toegevoegd.");
+        }
+        return ResponseEntity.ok(added + " gebruikers succesvol toegevoegd.");
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

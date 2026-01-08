@@ -88,7 +88,10 @@ public class VragenController {
             return ResponseEntity.badRequest().body("Bestand is leeg");
         }
         int added = vragenService.addVragenFromCsv(file);
-        return ResponseEntity.ok(added + " vragen succesvol toegevoegd");
+        if (added == 0) {
+            return ResponseEntity.ok("Geen nieuwe vragen toegevoegd.");
+        }
+        return ResponseEntity.ok(added + " vragen succesvol toegevoegd.");
     }
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
